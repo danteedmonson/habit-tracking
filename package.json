@@ -1,0 +1,8 @@
+{
+  "name": "habit-tracking",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:danteedmonson/habit-tracking.git",
+  "author": "Dante Edmonson <dedmonson@Knights.ucf.edu>",
+  "license": "MIT"
+}
