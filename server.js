@@ -1,7 +1,11 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+
+const express = require('express');         //import express module
+const app = express();                      // create a new express application
+const mongoose = require('mongoose');       // import mongoose module - library for mongoDB
+const dotenv = require('dotenv');           // import dotenv - enviromental variables are saved on the .env file 
+
+// Import Routes
+const authRoute = require('./routes/auth');
 
 // read the .env file for the enviromental variables
 dotenv.config();
@@ -12,8 +16,8 @@ mongoose.connect(
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => console.log('Connected to db!'))
 
-// Import Routes
-const authRoute = require('./routes/auth');
+// Middleware
+app.use(express.json());
 
 // Route Middlewares
 app.use('/api/user', authRoute);
