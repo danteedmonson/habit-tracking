@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+/* 
+This is a Schema for the User Collection in mongodb
+This defines the structure of the document, 
+default values, validators, etc.
+*/
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -22,7 +27,16 @@ const userSchema = new mongoose.Schema({
     date: {
        type: Date,
        default: Date.now
+    },
+
+    habits: {
+        type: Array
     }
 })
 
+/* 
+This creates a Model which provides an interface to the
+database for creating, querying, updating, deleting records, etc. 
+It's a wrapper for the Schema
+*/
 module.exports = mongoose.model('User', userSchema);

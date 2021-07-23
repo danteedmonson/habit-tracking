@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 // import the validation functions
 const { registerValid, loginValid } = require("../validation");
 
-router.post("/register", async (req, res) => {
+router.post("/register",  async (req, res) => {
   //Validate Data before making a User
   const error = registerValid(req.body);
 
@@ -47,6 +47,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const error = loginValid(req.body);
+  
 
   if (error === undefined) {
     //Check if user is already in the database
