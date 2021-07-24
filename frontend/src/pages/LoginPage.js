@@ -50,7 +50,7 @@ function LoginPage() {
 
     return (
 
-        <div style={{ margin: "auto", padding: 10, marginTop: "3%", width: "100%" }}>
+        <div style={{ margin: "auto", padding: 10, marginTop: "3%" }}>
 
 
             <div className="container my-container mt-5 justify-content-end">
@@ -114,7 +114,7 @@ function LoginPage() {
                         </div>
                         <div className="row my-row justify-content-center align-items-center ">
                             <div className="col-5 col my-col col-auto">
-                                <Button variant="secondary" size="lg" onClick={login} block>Login</Button>
+                                <Button variant="secondary" size="lg" onClick={login} style={{width:"100%"}} block>Login</Button>
                               
                                 <span id="loginResult"><p>{message}</p></span>
                             </div>

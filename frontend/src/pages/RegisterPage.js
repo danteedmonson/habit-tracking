@@ -50,7 +50,7 @@ function RegisterPage() {
 
     return (
 
-        <div style={{ margin: "auto", padding: 10, marginTop: "3%", width: "100%" }}>
+        <div style={{ margin: "auto", padding: 10, marginTop: "3%"}}>
 
 
             <div className="container my-container mt-5 justify-content-end">
@@ -58,11 +58,19 @@ function RegisterPage() {
                     
                     <div className="col col-auto w3-animate-right" style={{ width: "55.55vh" }}>
 
+                    <div className="row my-row justify-content-center align-items-start " >
+                            <div className="col-md-6 col-sm-6 my-col">
+                                
+                            </div>
+
+                        </div>
+
                         <div className="row my-row justify-content-center align-items-center" style={{ height: "10.19vh" }} >
                             <div className="col-md-6 col-sm-6 my-col">
                                 <h4 className="text-center" style={{ fontFamily: 'Bungee', fontSize: 25 }}>Register to Get Started!</h4>
                             </div>
                         </div>
+                        
                         <div className="row my-row justify-content-center align-items-center " >
 					<div className="col-md-8 col-sm-6 my-col">
 						<div className="form-group">
@@ -105,7 +113,7 @@ function RegisterPage() {
                         </div>
                         <div className="row my-row justify-content-center align-items-center ">
                             <div className="col-5 col my-col col-auto">
-                                <Button variant="secondary" size="lg" onClick={login} block>Register</Button>
+                                <Button variant="secondary" size="lg" onClick={login} style={{width:"100%"}} block>Register</Button>
 
                                 <span id="loginResult"><p>{message}</p></span>
                             </div>
@@ -127,12 +135,7 @@ function RegisterPage() {
 
                         </div>
 
-                        <div className="row my-row justify-content-center align-items-start " >
-                            <div className="col-md-6 col-sm-6 my-col">
-                                
-                            </div>
-
-                        </div>
+                       
                     </div>
                     <div className="col w3-animate-opacity" style={{ width: "68.35vh", backgroundColor: "#BAA1A7" }}>
                         <video width="120%" height="100%" style={{ objectFit: "cover", marginLeft: "-2.6%" }} autoPlay muted loop>
