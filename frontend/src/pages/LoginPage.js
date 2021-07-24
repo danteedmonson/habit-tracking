@@ -1,58 +1,19 @@
-import React, { useRef, useState } from "react";
-import { Button, TextField } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/esm/Button';
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import { Checkmark } from 'react-checkmark';
+import video from '../media/into-the-valley.mp4';
 
 
 
-const style = {
-    flexContainer: {
-        display: "flex",
-        flexDirection: "column",
-        height: "100vh",
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center"
-    },
 
-    buttonsContainer: {
-        border: "1px solid red",
-        display: "flex",
-        justifyContent: "center",
-    },
-
-    button: {
-        margin: 10,
-        minWidth: "50%",
-        maxWidth: "60%"
-    },
-
-    textFields: {
-        border: "1px solid red",
-
-        display: "flex",
-        flexDirection:"column",
-        justifyContent: "center",
-        alignItems: "center"
-
-    },
-
-    loginArea: {
-        border: "1px solid red",
-        height: "60vh",
-        width: "70vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center"
-        
-
-    }
-};
 
 function LoginPage() {
-    const classes = useStyles();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     const login = () => {
 
@@ -71,50 +32,124 @@ function LoginPage() {
                 },
 
             }).then(res => {
-                console.log(res.data);
+                console.log(res.data + "YOOOO");
 
-            }).catch(err => console.log(err))
+            }).catch(err => setMessage(err.response.data))
         } catch (err) {
-            console.log(err)
+            setMessage(err.response.data)
         }
 
 
     }
 
+    const goRegister = async event => {
+		event.preventDefault();
+		window.location.href = '/Register';
+	}
+
 
     return (
-        <div style={style.flexContainer}>
-            <div style={style.loginArea}>
-            <form className={classes.root} style ={style.textFields}  noValidate autoComplete="off">
-                <TextField id="outlined-basic" label="Login" variant="outlined" color="primary" onChange={(c) => setUsername(c.target.value)} />
-                <TextField id="outlined-basic" label="Password" variant="outlined" type="password" onChange={(c) => setPassword(c.target.value)} />
-                
 
-            </form>
-            <h6>forgot password</h6>
+        <div style={{ margin: "auto", padding: 10, marginTop: "3%", width: "100%" }}>
 
-            <div style={style.buttonsContainer}>
-                <Button variant="contained" style={style.button} onClick={login}>
-                    Login
-                </Button>
-                
-            </div>
-            <div>
-                <h6>New User? Register Here</h6>
-               
-            </div>
+
+            <div className="container my-container mt-5 justify-content-end">
+                <div className="row justify-content-end ">
+                    <div className="col w3-animate-opacity" style={{width: "68.35vh", backgroundColor:"#BAA1A7"}}>
+                    <video width="120%" height="100%" style={{objectFit: "cover", marginLeft: "-2.6%"}} autoPlay muted loop>
+                        <source src={video} type="video/mp4"/>
+                    </video>
+
+                    </div>
+                    <div className="col col-auto  w3-animate-left" style={{width: "55.55vh"}}>
+
+                        <div className="row my-row justify-content-center align-items-center" style={{ height: "10.19vh" }} >
+                            <div className="col-md-6 col-sm-6 my-col">
+                                <h4 className="text-center" style={{ fontFamily: 'Bungee', fontSize: 25 }}>Login to Get Started!</h4>
+                            </div>
+                        </div>
+                        <div className="row my-row  align-items-center justify-content-center" style={{ height: "14.8vh" }}>
+                            <div className="" style={{ width: 110, height: 110, padding: 0 }} >
+                                <CircularProgressbarWithChildren
+                                    value="100"
+                                    background="true"
+                                    styles={buildStyles({
+
+                                        pathColor: "#797B84",
+                                        textColor: '#DBABBE',
+                                        trailColor: '#d6d6d6',
+                                        backgroundColor: '#BAA1A7',
+
+                                    })}
+                                >
+
+
+
+                                    <Checkmark size='108px' color="#797B84" />
+
+                                </CircularProgressbarWithChildren>
+
+                            </div>
+
+                        </div>
+                        <div className="row my-row justify-content-center align-items-center " >
+                            <div className="col-md-8 col-sm-6 my-col">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="Username " onChange={(c) => setUsername(c.target.value)} />
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="row my-row justify-content-center align-items-center ">
+                            <div className="col-md-8 col-sm-6 my-col">
+                                <div className="form-group">
+
+                                    <input type="password" className="form-control" placeholder="Password" onChange={(c) => setPassword(c.target.value)} />
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="row my-row justify-content-center align-items-center ">
+                            <div className="col-5 col my-col col-auto">
+                                <Button variant="secondary" size="lg" onClick={login} block>Login</Button>
+                              
+                                <span id="loginResult"><p>{message}</p></span>
+                            </div>
+
+
+                        </div>
+                        <div className="row my-row justify-content-center align-items-end " style={{ height: "6.5vh" }} >
+                            <div className="col-md-6 col-sm-6 my-col">
+                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goRegister}><a>New User? Register Here</a></h6>
+                            </div>
+
+
+
+                        </div>
+                        <div className="row my-row justify-content-center align-items-start " >
+                            <div className="col-md-6 col-sm-6 my-col">
+                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }}><a>Need Help? Click Here</a></h6>
+                            </div>
+
+                        </div>
+
+                        <div className="row my-row justify-content-center align-items-start " >
+                            <div className="col-md-6 col-sm-6 my-col">
+                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }}><a>Resend Verification</a></h6>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     );
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
+
 
 export default LoginPage;
