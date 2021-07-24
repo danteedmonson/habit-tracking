@@ -41,7 +41,7 @@ router.post("/register",  async (req, res) => {
       res.status(400).send(err);
     }
   } else {
-    res.send(error.details[0].message).status(400);
+    res.status(400).send(error.details[0].message);
   }
 });
 
@@ -54,13 +54,13 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.send("Email or Password Incorrect").status(400);
+      return res.status(400).send("Email or Password Incorrect");
     }
 
     const validPass = await bcrypt.compare(req.body.password, user.password )
 
     if (!validPass) {
-      return res.send("Email or Password Incorrect").status(400);
+      return res.status(400).send("Email or Password Incorrect");
     }
 
 
@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
 
    
   } else {
-    res.send(error.details[0].message).status(400);
+    res.status(400).send(error.details[0].message);
   }
 });
 
