@@ -53,10 +53,10 @@ function LoginPage() {
         <div style={{ margin: "auto", padding: 10, marginTop: "3%" }}>
 
 
-            <div className="container my-container mt-5 justify-content-end">
-                <div className="row justify-content-end ">
+            <div className="container my-container mt-5 justify-content-end ">
+                <div className="row justify-content-end  ">
                     <div className="col w3-animate-opacity" style={{width: "68.35vh", backgroundColor:"#BAA1A7"}}>
-                    <video width="120%" height="100%" style={{objectFit: "cover", marginLeft: "-2.6%"}} autoPlay muted loop>
+                    <video width="120%" height="100%" style={{objectFit: "cover", marginLeft: "-2.6%", opacity:0.5}} autoPlay muted loop>
                         <source src={video} type="video/mp4"/>
                     </video>
 
