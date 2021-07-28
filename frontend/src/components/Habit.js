@@ -21,7 +21,7 @@ function Habit () {
 
 {/* The progress bar takes the full width of the div */}
 <div
-    style={{ width: 140, height: 140, padding: 0 }}
+    style={{ width: 120, height: 120, padding: 0 }}
     className="row justify-content-center align-items-center my-row2 mx-auto"
     onMouseEnter={() => setHover(true)}
     onMouseLeave={() => setHover(false)}
@@ -45,7 +45,7 @@ function Habit () {
 
             {
                 percent >= 100 ?
-                    <Checkmark size='95px' color="#DBABBE" /> : <img style={{ width: "50%", marginTop: -5 }} src={IconsArr[0]} alt="habit" />
+                    <Checkmark size='83px' color="#DBABBE" /> : <img style={{ width: "50%", marginTop: -5 }} src={IconsArr[0]} alt="habit" />
 
             }               </CircularProgressbarWithChildren>
     </div>

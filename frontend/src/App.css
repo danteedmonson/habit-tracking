@@ -1,8 +1,6 @@
 .App-container {
   background-image: url("./media/wallpap.png");
 
-  
- 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,14 +10,12 @@
   color: white;
 }
 
+
+
 .my-body {
   /* background-image: url('../images/praxisbackground2.jpg'); */
-  background-size:cover;
-  background-repeat:no-repeat;
-
-
-  
-
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #loginResult {
@@ -28,13 +24,12 @@
 }
 
 .my-container {
-
-  border: 15px solid #BAA1A7;
+  border: 15px solid #baa1a7;
   width: 10px;
-  background-color: #BAA1A7;
-  border-radius: 27px; 
-    overflow: hidden;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) 
+  background-color: #baa1a7;
+  border-radius: 27px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dash-container {
@@ -42,60 +37,86 @@
   opacity: 1;
 }
 
+.dashBox {
+  background-color: #baa1a7;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom-right-radius: 27px;
+  border-bottom-left-radius: 27px;
+  border: 3px solid black;
+  overflow: hidden;
+  font-family: 'Bungee'
+ 
+}
 
+#habitBox {
+  width: 98.5%;
+}
+
+#progressBox {
+  width: 100%;
+  height: 15.7vh;
+  margin-bottom: 5vh
+}
+
+.modal-content {
+  border-radius: 27px !important;
+  border: 3px solid black !important;
+}
+#motiBox {
+  width: 100%;
+}
+
+#calBox {
+  margin-top: 5vh;
+  width: 95.5%;
+  margin-left: 2%;
+}
 
 .my-row {
-  
-    height: 7.4vh;
-    max-width: 55.55vh;
-    background-color: #BAA1A7;
-    
+  height: 7.4vh;
+  max-width: 55.55vh;
+  background-color: #baa1a7;
 }
 
 .my-row2 {
-   
-     height: 45px;
-     max-width: 600px;
-   
- }
+  height: 45px;
+  max-width: 600px;
+}
 
- .my-row3 {
-     border-bottom: 3px solid #DBABBE;
- 
- }
+.my-row3 {
+  border-bottom: 3px solid #dbabbe;
+}
 .my-col {
-
+  align-items: center;
+  padding: 0px;
 }
 
 .my-col2 {
- 
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   height: 100px;
   width: 100px;
- 
+
   background-size: 100%, 100%;
   border-radius: 50%;
 
   background-image: none;
 }
 
-.carousel-control-next-icon:after
-{
-  content: '>';
+.carousel-control-next-icon:after {
+  content: ">";
   font-size: 55px;
   color: black;
 }
 
 .carousel-control-prev-icon:after {
-  content: '<';
+  content: "<";
   font-size: 55px;
   color: black;
-  
 }
-
 
 .sidenav {
   height: 100%;
@@ -104,14 +125,14 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #797B84;
+  background-color: #797b84;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
   margin-top: 43px;
   font-size: 20px;
-  font-family: 'Bungee', sans-serif;
-  border-right: 3px solid #DBABBE
+  font-family: "Bungee", sans-serif;
+  border-right: 3px solid #dbabbe;
 }
 
 .sidenav a {
@@ -127,12 +148,22 @@
   color: #f1f1f1;
 }
 
-#navOption1, #navOption2, #navOption3, #navOption4, #lOut, #flatNav {
-  cursor:pointer
+#navOption1,
+#navOption2,
+#navOption3,
+#navOption4,
+#lOut,
+#flatNav {
+  cursor: pointer;
 }
 
-#navOption1:hover, #navOption2:hover, #navOption3:hover, #navOption4:hover, #lOut:hover, #flatNav:hover {
-  color: white
+#navOption1:hover,
+#navOption2:hover,
+#navOption3:hover,
+#navOption4:hover,
+#lOut:hover,
+#flatNav:hover {
+  color: white;
 }
 
 .sidenav .closebtn {
@@ -144,7 +175,6 @@
 }
 
 .closebtn:hover {
-  color:white;
-  cursor:pointer
-
+  color: white;
+  cursor: pointer;
 }

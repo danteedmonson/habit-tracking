@@ -1,18 +1,61 @@
 import React from 'react';
-import HabitList from '../components/HabitList';
+import HabitBox from '../components/HabitBox';
+import ProgressBox from '../components/ProgressBox';
+import MotiBox from '../components/MotiBox';
+import CalBox from '../components/CalBox';
+import StatBox from '../components/StatBox';
 
-function Dashboard () {
+function Dashboard() {
 
     return (
-        <div className="container dash-container " style={{height:"100vh", width:"70%", 
-        backgroundColor:"white", color:"black", paddingTop:"10%"}}>
-            <h2 style={{marginLeft:"5%", fontFamily: 'Bungee'}}>Habits</h2>
-            <div style={{height:0.2, width:"90%", backgroundColor:"black", margin:"auto", opacity: 0.3}}></div>
+        <div style={{ color: "black" }}>
             <br></br>
-      
-            <HabitList/>
-            <div style={{height:0.2, width:"90%", backgroundColor:"black", margin:"auto", opacity: 0.3}}></div>
+            <br></br>
+            <br></br>
+            <div className="container">
+                {/* <div className="row">
+                    <div className="col">
+                    <ProgressBox />
+                    </div>
+                </div>
+                <div className="row">
+                    <HabitBox />
+                </div>
+
+            </div> */}
+
+                <div className="row mx-auto justify-content-center align-items-center">
+                    <div className="col-12 my-col">
+                        <ProgressBox />
+                    </div>
+                </div>
+                <div className="row mx-auto justify-content-between align-items-center">
+                    <div className="col-9 my-col">
+                        <HabitBox />
+                    </div>
+                    
+                    <div className="col-3 my-col">
+                        <MotiBox />
+                    </div>
+                </div>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-6 my-col">
+                        <StatBox />
+                    </div>
+
+                   
+                    
+                    <div className="col-6 my-col">
+                        <CalBox />
+                    </div>
+                </div>
+
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
+
     )
 }
 

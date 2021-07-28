@@ -50,7 +50,7 @@ function LoginPage() {
 
     return (
 
-        <div style={{ margin: "auto", padding: 10, marginTop: "3%" }}>
+        <div style={{ margin: "auto", padding: 10, marginTop: "3%" }} className="auth-container">
 
 
             <div className="container my-container mt-5 justify-content-end ">
