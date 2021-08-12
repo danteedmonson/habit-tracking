@@ -11,7 +11,7 @@ function StatBox() {
         <div className="dashBox" id="calBox">
             Stats
         
-            <div style={{ height: "48.7vh", width:"100%",  backgroundColor:"white" }}>
+            <div id="calBoxInner" style={{ height: "48.7vh", width:"100%",  backgroundColor:"white" }}>
                
                 <BarChart/>
             </div>

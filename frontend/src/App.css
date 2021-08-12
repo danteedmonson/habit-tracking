@@ -51,6 +51,11 @@
 
 #habitBox {
   width: 98.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+  
 }
 
 #progressBox {
@@ -63,6 +68,19 @@
   border-radius: 27px !important;
   border: 3px solid black !important;
 }
+
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: auto;
+}
+
+.modal-open[style] {
+  padding-right: 0px !important;
+}
+
 #motiBox {
   width: 100%;
 }
@@ -71,6 +89,18 @@
   margin-top: 5vh;
   width: 95.5%;
   margin-left: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+}
+
+#calBoxInner {
+
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
 }
 
 .my-row {

@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
+import { defaults } from 'react-chartjs-2'
+import 'chartjs-plugin-datalabels';
+
+defaults.defaultFontFamily = "'Bungee', sans-serif";
+defaults.font.family = "'Bungee', sans-serif";
+
+
 
 function BarChart(props) {
+    console.log(defaults)
 
     var mon = 0, tues = 0, wed=0, thurs = 0, fri = 0, sat = 0, sun = 0
     var days = [mon, tues, wed, thurs, fri, sat, sun]
@@ -38,8 +46,6 @@ function BarChart(props) {
             case 6:
                 sat =sat + 1
                 break;
-            default:
-                break;
         }
 
 
@@ -47,15 +53,15 @@ function BarChart(props) {
 
 
 
- 
+
 
 
 
     return (
-        <div className="container"> 
+        <div className="container" > 
         
             <div className="row" style={{ width: "100%" }} >
-                <div className="col" style={{}}>
+                <div className="col" style={{fontFamily:"Bungee"}}>
                   
                     <Bar
                         data={{
@@ -67,6 +73,9 @@ function BarChart(props) {
 
                                     data: (typeof props.Checkins !== "undefined") ? [mon,tues,wed,thurs,fri,sat,sun]: [5,8,3,6,9,3,6],
                                     backgroundColor: '#EDBBB4',
+                                    borderRadius: 5,
+                                    border: 2,
+                                    borderColor: "#000"
 
                                 }
                             ]

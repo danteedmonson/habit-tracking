@@ -18,12 +18,14 @@ function HabitBox() {
                     <div className="col-auto">Habit</div>
 
                     <div className="col-1">
-                        <Button variant="secondary" onClick={() => setModalShow(true)} style={{width:"100%", marginTop:"-7px", height:"120%",  borderBottomRightRadius: 27, borderBottomLeftRadius: 27}}>+</Button>
+                        <Button variant="secondary" onClick={() => setModalShow(true)} style={{color:"#EDBBB4", border: "2px solid #EDBBB4", width:"100%", marginTop:"-7px", height:"120%",  borderBottomRightRadius: 27, borderBottomLeftRadius: 27}}>+</Button>
                     </div>
 
                 </div>
             </div>
+            
             <div style={{ height: "48.7vh", width: "100vh", borderRadius: 0, backgroundColor: "white" }}>
+            <br></br>
                 <HabitList />
 
             </div>
