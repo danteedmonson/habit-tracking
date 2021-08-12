@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/esm/Button';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
@@ -14,6 +15,7 @@ function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+
 
     const login = () => {
 
@@ -33,6 +35,11 @@ function LoginPage() {
 
             }).then(res => {
                 console.log(res.data + "YOOOO");
+                // store the returned token into local storage
+                const jwt = res.data;
+
+                localStorage.setItem('jwt', jwt );
+                goDashboard();
 
             }).catch(err => setMessage(err.response.data))
         } catch (err) {
@@ -46,6 +53,11 @@ function LoginPage() {
 		event.preventDefault();
 		window.location.href = '/Register';
 	}
+
+    const goDashboard = async event => {
+        event.preventDefault();
+        window.location.href = '/Dashboard';
+    }
 
 
     return (

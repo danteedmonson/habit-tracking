@@ -11,6 +11,7 @@ const addHabit = require('./routes/addHabit');
 const getHabits = require('./routes/getHabits');
 const deleteHabit = require('./routes/deleteHabit');
 const updatePercent = require('./routes/updatePercent');
+const verifyToken = require('./routes/verifyToken');
 //const resetHabits = require('./routes/reset');
 
 
@@ -33,6 +34,7 @@ app.use('/api/', addHabit);
 app.use('/api/', getHabits);
 app.use('/api/', deleteHabit);
 app.use('/api/', updatePercent);
+app.use('/api/', verifyToken);
 //app.use('/api/', resetHabits);
 
 

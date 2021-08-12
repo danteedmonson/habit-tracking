@@ -20,7 +20,7 @@ router.post("/editHabit", verify, async (req, res) => {
     const newOccur = req.body.Occurrence;
 
     try {
-      const user = await User.findOne({ _id: req.user });
+      let user = await User.findOne({ _id: req.user });
 
       let index = -1;
       for (let i = 0; i < user.habits.length; i++) {
@@ -53,7 +53,7 @@ router.post("/editHabit", verify, async (req, res) => {
           },
         }
       );
-      const user = await User.findOne({ _id: req.user });
+       user = await User.findOne({ _id: req.user });
 
       res.json(user.habits);
     } catch (err) {

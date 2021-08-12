@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const router = require("express").Router();
 
 
 function verify (req,res, next) {
@@ -17,5 +18,8 @@ function verify (req,res, next) {
 
     }
 }
+
+
+
 
 module.exports = verify;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import HabitBox from '../components/HabitBox';
 import ProgressBox from '../components/ProgressBox';
 import MotiBox from '../components/MotiBox';
@@ -7,6 +7,16 @@ import StatBox from '../components/StatBox';
 
 
 function Dashboard() {
+
+    useEffect(() => {
+       const jwt = localStorage.getItem('jwt');
+        window.location.href = '/';
+
+    });
+
+    const goLogin = () => {
+
+    }
 
     return (
         <div style={{ color: "black" }}>
