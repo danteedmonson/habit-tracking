@@ -18,6 +18,13 @@
   background-repeat: no-repeat;
 }
 
+.my-habit {
+  padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+}
+
 #loginResult {
   font-size: 15px;
   color: darkred;
@@ -107,6 +114,11 @@
   height: 7.4vh;
   max-width: 55.55vh;
   background-color: #baa1a7;
+}
+
+.lesspadding {
+  padding: 4 !important;
+  margin: 0 !important;
 }
 
 .my-row2 {
@@ -207,4 +219,34 @@
 .closebtn:hover {
   color: white;
   cursor: pointer;
+}
+
+/* on hover for inactive Habits */
+
+
+.mytools {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+ .mytools .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.mytools:hover .tooltiptext {
+  visibility: visible;
 }

@@ -46,6 +46,8 @@ function BarChart(props) {
             case 6:
                 sat =sat + 1
                 break;
+            default:
+                break;
         }
 
 

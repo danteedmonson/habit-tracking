@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/esm/Button';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
@@ -15,6 +15,40 @@ function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [verified, setVerified] = useState(0);
+
+
+    useEffect(() => {
+        const jwt = localStorage.getItem('jwt');
+ 
+        try {
+         axios({
+ 
+             method: 'post',
+             url: 'http://localhost:5000/api/pageVerify',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'auth-token': jwt
+             },
+ 
+         }).then(res => {
+             console.log(res.data);
+             setVerified(1);
+             window.location.href = '/dashboard';
+             // store the returned token into local storage
+            
+ 
+           
+ 
+         }).catch(err =>  setVerified(2))
+     } catch (err) {
+        setVerified(2);
+     }
+ 
+ 
+        
+ 
+     },[]);
 
 
     const login = () => {
@@ -38,7 +72,7 @@ function LoginPage() {
                 // store the returned token into local storage
                 const jwt = res.data;
 
-                localStorage.setItem('jwt', jwt );
+                localStorage.setItem('jwt', jwt);
                 goDashboard();
 
             }).catch(err => setMessage(err.response.data))
@@ -50,15 +84,19 @@ function LoginPage() {
     }
 
     const goRegister = async event => {
-		event.preventDefault();
-		window.location.href = '/Register';
-	}
-
-    const goDashboard = async event => {
         event.preventDefault();
+        window.location.href = '/Register';
+    }
+
+    const goDashboard = () => {
         window.location.href = '/Dashboard';
     }
 
+    if(verified === 0 || verified === 1) {
+        return (
+            <div>PEENNNISS</div>
+        )
+    }
 
     return (
 
@@ -67,13 +105,13 @@ function LoginPage() {
 
             <div className="container my-container mt-5 justify-content-end ">
                 <div className="row justify-content-end  ">
-                    <div className="col w3-animate-opacity" style={{width: "68.35vh", backgroundColor:"#BAA1A7"}}>
-                    <video width="120%" height="100%" style={{objectFit: "cover", marginLeft: "-2.6%", opacity:0.5}} autoPlay muted loop>
-                        <source src={video} type="video/mp4"/>
-                    </video>
+                    <div className="col w3-animate-opacity" style={{ width: "68.35vh", backgroundColor: "#BAA1A7" }}>
+                        <video width="120%" height="100%" style={{ objectFit: "cover", marginLeft: "-2.6%", opacity: 0.5 }} autoPlay muted loop>
+                            <source src={video} type="video/mp4" />
+                        </video>
 
                     </div>
-                    <div className="col col-auto  w3-animate-left" style={{width: "55.55vh"}}>
+                    <div className="col col-auto  w3-animate-left" style={{ width: "55.55vh" }}>
 
                         <div className="row my-row justify-content-center align-items-center" style={{ height: "10.19vh" }} >
                             <div className="col-md-6 col-sm-6 my-col">
@@ -126,8 +164,8 @@ function LoginPage() {
                         </div>
                         <div className="row my-row justify-content-center align-items-center ">
                             <div className="col-5 col my-col col-auto">
-                                <Button variant="secondary" size="lg" onClick={login} style={{width:"100%"}} block>Login</Button>
-                              
+                                <Button variant="secondary" size="lg" onClick={login} style={{ width: "100%" }} block>Login</Button>
+
                                 <span id="loginResult"><p>{message}</p></span>
                             </div>
 
@@ -155,7 +193,7 @@ function LoginPage() {
 
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ function MotiBox() {
         <div className="dashBox" id="motiBox">
             Motivation
         
-            <div style={{ height: "48.7vh", width:"31.5vh",  backgroundColor:"white", fontFamily:"roboto", textAlign:"center" }}>
+            <div style={{ height: "48.7vh", width:"100%",  backgroundColor:"white", fontFamily:"roboto", textAlign:"center" }}>
                <br></br>
                <br></br>
                 <h3><i>"I can do all things through Christ"</i></h3>

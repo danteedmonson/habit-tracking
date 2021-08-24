@@ -21,8 +21,18 @@ function AddModal(props) {
     const [enableNext, setEnableNext] = useState(true)
     const [enableSave, setEnableSave] = useState(true)
 
+    const [mon, setMon] = useState(false);
+    const [tues, setTues] = useState(false);
+    const [wed, setWed] = useState(false);
+    const [thurs, setThurs] = useState(false);
+    const [fri, setFri] = useState(false);
+    const [sat, setSat] = useState(false);
+    const [sun, setSun] = useState(false);
+
+
     const [showIcons, setShowIcons] = useState(true);
     let date = new Date();
+    const occ = { mon, tues, wed, thurs, fri, sat, sun }
 
 
     //   const bp = require('./bp.js');
@@ -36,72 +46,14 @@ function AddModal(props) {
 
 
 
-    //   var tok = storage.retrieveToken();
-    //   var ud = jwt.decode(tok, { complete: true });
 
-    //    var userId = ud.payload.id;
-    //var userId = ud.payload.userId;
-    //var firstName = ud.payload.firstName;
-    //var lastName = ud.payload.lastName;
-
-    //   const addCard = async event => {
-    //     event.preventDefault();
-
-    //     var obj = { accessToken: tok, habitName: habitName, description: desc, occurence: occur, currentDate: date, color: color, icon: icon, timesPerOccurence: amount };
-
-
-    //     var js = JSON.stringify(obj);
-
-    //     try {
-    //       // Axios code follows
-    //       var config =
-    //       {
-    //         method: 'post',
-    //         url: bp.buildPath('api/addHabit'),        // or api/addcard or api/searchcards
-    //         headers:
-    //         {
-    //           'Content-Type': 'application/json'
-    //         },
-    //         data: js
-    //       };
-
-    //       axios(config)
-    //         .then(function (response) {
-    //           var res = response.data;
-    //           if (res.error) {
-    //             console.log(res.error);
-    //           }
-    //           else {
-    //             if (res.error.length > 0) {
-    //               setMessage("API Error:" + res.error);
-    //             }
-    //             else {
-    //               console.log('Habit has been added');
-
-    //               setTimeout(() => {
-    //                 closeModal();
-    //               }, 300);
-    //             }
-    //           }
-    //         })
-    //         .catch(function (error) {
-    //           console.log(error);
-    //         });
-
-    //     }
-    //     catch (e) {
-    //       setMessage(e.message);
-    //     }
-
-
-
-    //   };
 
 
     useEffect(() => {
 
         console.log(color)
-        if (color !== "" && habitName !== "" && desc !== "" && occur !== "" && amount !== "") {
+        if (color !== "" && habitName !== "" && desc !== "" && amount !== "" &&
+            (mon !== false || tues !== false || wed !== false || thurs !== false || fri !== false || sat !== false || sun !== false)) {
             setEnableNext(false)
 
             if (icon !== -1) {
@@ -109,19 +61,66 @@ function AddModal(props) {
             }
 
         }
+        else {
+            setEnableNext(true)
+
+        }
 
 
     })
 
+    const addHabit =  () => {
+
+        const jwt = localStorage.getItem('jwt');
+
+        const habitData = JSON.stringify({
+            "HabitName": habitName,
+            "Description": desc,
+            "Icon": icon,
+            "Color": color,
+            "Occurrence": {
+                "Mon": mon,
+                "Tues": tues,
+                "Wed": wed,
+                "Thurs": thurs,
+                "Fri": fri,
+                "Sat": sat,
+                "Sun": sun
+            },
+            "TimesPer": amount
+         }
+         )
+
+        try {
+            axios({
+
+                method: 'post',
+                url: 'http://localhost:5000/api/addHabit',
+                data: habitData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': jwt
+                },
+
+            }).then(res => {
+                console.log(res.data);
+
+                props.rerender()
+
+                setTimeout(() => {
+                    closeModal();
+                  }, 300);
+              
+             
 
 
 
 
+            }).catch(err => console.log("hello"))
+        } catch (err) {
 
-
-
-
-
+        }
+    }
 
 
     const closeModal = async event => {
@@ -145,6 +144,9 @@ function AddModal(props) {
 
 
 
+    useEffect(() => console.log(occ), [occ])
+
+
 
     return (
         <Modal
@@ -156,13 +158,13 @@ function AddModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            
+
             <Modal.Header
                 style=
                 {
                     {
                         backgroundColor: "#baa1a7",
-                        
+
                     }
                 }>
                 <Modal.Title id="example-custom-modal-styling-title" >
@@ -183,21 +185,96 @@ function AddModal(props) {
 
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={desc} onChange={(c) => setDesc(c.target.value)}></textarea>
 
+
+
                         <br></br>
                         <br></br>
                         <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Occurrence</h8>
+                        <div className="container">
+                            <div className="row">
+                                <div className="form-check col-3">
+                                    {
+                                        mon ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => mon ? setMon(false) : setMon(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => mon ? setMon(false) : setMon(true)} />
 
-                        <select class="form-control" id="exampleFormControlSelect1" value={occur} onChange={(c) => setOccur(c.target.value)}>
-                            <option hidden ></option>
-                            <option>daily</option>
-                            <option>weekly</option>
+                                    }
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Monday
+                                    </label>
+                                </div>
 
+                                <div className="form-check col-3">
+                                    {
+                                        tues ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => tues ? setTues(false) : setTues(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => tues ? setTues(false) : setTues(true)} />
+                                    }
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Tuesday
+                                    </label>
+                                </div>
 
+                                <div className="form-check col-3">
+                                {
+                                        wed ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => wed ? setWed(false) : setWed(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => wed ? setWed(false) : setWed(true)} />
+                                }                     
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Wednesday
+                                    </label>
+                                </div>
 
-                        </select>
+                                <div className="form-check col-3">
+                                {
+                                        thurs ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => thurs ? setThurs(false) : setThurs(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => thurs ? setThurs(false) : setThurs(true)} />
+                                } 
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Thursday
+                                    </label>
+                                </div>
+
+                                <div className="form-check col-3">
+                                {
+                                        fri ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => fri ? setFri(false) : setFri(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => fri ? setFri(false) : setFri(true)} />
+                                }
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Friday
+                                    </label>
+                                </div>
+
+                                <div className="form-check col-3">
+                                {
+                                        sat ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => sat ? setSat(false) : setSat(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => sat ? setSat(false) : setSat(true)} />
+                                }
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Saturday
+                                    </label>
+                                </div>
+
+                                <div className="form-check col-3">
+                                {
+                                        sun ?
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => sun ? setSun(false) : setSun(true)} checked /> :
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" onChange={() => sun ? setSun(false) : setSun(true)} />
+                                }
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Sunday
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 
                         <br></br>
                         <br></br>
+
                         <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Times Per Occurrence</h8>
 
                         <select class="form-control" id="exampleFormControlSelect1" value={amount} onChange={(c) => setAmount(c.target.value)}>
@@ -210,6 +287,8 @@ function AddModal(props) {
 
 
                         </select>
+
+
 
                         <br></br>
                         <br></br>
@@ -279,12 +358,12 @@ function AddModal(props) {
 
 
             }
-            <Modal.Footer 
+            <Modal.Footer
             >
 
                 {showIcons ? <Button onClick={() => setShowIcons(false)} variant="secondary" disabled={enableNext}>Next</Button>
                     : <Button onClick={() => setShowIcons(true)} variant="secondary">Prev</Button>}
-                {showIcons ? <></> : <Button onClick={() => console.log("bruh")} variant="secondary" disabled={enableSave}>Save</Button>}
+                {showIcons ? <></> : <Button onClick={()=>addHabit()} variant="secondary" disabled={enableSave}>Save</Button>}
                 <Button onClick={closeModal} variant="secondary">Cancel</Button>
             </Modal.Footer>
         </Modal>

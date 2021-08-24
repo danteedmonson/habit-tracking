@@ -7,6 +7,12 @@ import Button from 'react-bootstrap/esm/Button';
 function HabitBox() {
     const [hover, setHover] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
+    const [rerend, setRerend] = useState(false);
+
+
+    const rerender = () => {
+        setRerend(true);
+    }
 
 
 
@@ -24,15 +30,16 @@ function HabitBox() {
                 </div>
             </div>
             
-            <div style={{ height: "48.7vh", width: "100vh", borderRadius: 0, backgroundColor: "white" }}>
+            <div style={{ height: "48.7vh", width: "100%", borderRadius: 0, backgroundColor: "white" }}>
             <br></br>
-                <HabitList />
+                <HabitList  rerend={rerend}/>
 
             </div>
         </div>
         <AddModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        rerender={rerender}
       />
       </>
     )
