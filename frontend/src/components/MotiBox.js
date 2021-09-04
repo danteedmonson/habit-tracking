@@ -13,7 +13,7 @@ function MotiBox() {
         
             <div style={{ height: "48.7vh", width:"100%", fontFamily:"Roboto", textAlign:"left", padding:20, fontSize:"10vw" }}>
              <div style={{ width: "80vw", height:"100%",}}>
-                 <div style={{width:"15%", display:"flex", justifyContent:"center", flexDirection:"column", height:"80%"}}>
+                 <div style={{width:"24%", display:"flex", justifyContent:"center", flexDirection:"column", height:"80%"}}>
                 <h3><i>{quotes[Math.floor(Math.random() * 50)].q}</i></h3>
                 <h3><i>- {quotes[Math.floor(Math.random() * 50)].a}</i></h3>
                 </div>

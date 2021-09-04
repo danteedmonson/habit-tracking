@@ -83,22 +83,22 @@ function StatsPage() {
 
 
     return (
-        <div style={{ color: "black" }}>
+        <div style={{ color: "black", width:"100%" }}>
             <AppDrawer/>
             <br></br>
             <br></br>
             <br></br>
-            <div className="container">
-                {/* <div className="row">
-                    <div className="col">
-                    <ProgressBox />
-                    </div>
-                </div>
-                <div className="row">
-                    <HabitBox />
-                </div>
+            <div className="container" style={{width:"100%"}}>
+                        {/* <div className="row">
+                            <div className="col">
+                            <ProgressBox />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <HabitBox />
+                        </div>
 
-            </div> */}
+                    </div> */}
 
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-12 my-col">

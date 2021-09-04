@@ -27,7 +27,7 @@ function HabitBox(props) {
             <div className="frostedBackground"></div>
             <div className="dashBox" id="habitBox">
                 <div className="container">
-                    <div className="row justify-content-between">
+                    <div className="row justify-content-between" style={{height:"10%"}}>
                         <div className="col-auto" style={{ marginLeft: -11.25, paddingLeft:"20px", paddingTop:12, fontFamily:"Courgette", color:"#EDBBB4" }}>Habits</div>
 
                         <div className="col-lg-1 col-md-2 col-sm-2">
@@ -54,7 +54,7 @@ function HabitBox(props) {
                     </div>
                 </div>
 
-                <div style={{ height: "100%", width: "100%", borderRadius: 0 }}>
+                <div style={{ height: "90%", width: "100%", borderRadius: 0 }}>
                     <br></br>
                     <HabitList rerend={rerend} rerender={rerender} progRerender={props.progRerender} />
                 </div>

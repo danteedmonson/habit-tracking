@@ -91,7 +91,7 @@ function Dashboard() {
 
 
     return (
-        <div style={{ color: "black" }}>
+        <div style={{ color: "black",width:"100%" }}>
             <AppDrawer/>
             <br></br>
             <br></br>

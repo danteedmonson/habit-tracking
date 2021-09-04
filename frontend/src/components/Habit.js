@@ -178,7 +178,18 @@ function Habit(props) {
 
                         })}
                     >
-                        <div  style={{ position: "absolute", backgroundColor: "black", height: "15%", width: "100%", color: "white", fontSize: "13px", opacity: hover && !props.Active ? 1 : 0 }}>Not Active</div>
+                        <div  style={{ 
+                            position: "absolute",
+                            backgroundColor: "black", 
+                            height: "15%", width: "100%", 
+                            color: "white", fontFamily:"Roboto", 
+                            fontWeight:"bold", fontSize: "13px", 
+                            opacity: hover && !props.Active ? 1 : 0,
+                             
+                            }}>
+                                NOT ACTIVE
+
+                            </div>
                         {/* Put any JSX content in here that you'd like. It'll be vertically and horizonally centered. */}
 
                         {
