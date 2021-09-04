@@ -6,14 +6,6 @@ import CalBox from '../components/CalBox';
 import StatBox from '../components/StatBox';
 import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import ListItemText from '@material-ui/core/ListItemText';
-import DoneAllIcon from '@material-ui/icons/DoneAll';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import SettingsIcon from '@material-ui/icons/Settings';
-import BarChartIcon from '@material-ui/icons/BarChart';
 import AppDrawer from '../components/AppDrawer';
 
 const useStyles = makeStyles({
@@ -26,7 +18,7 @@ const useStyles = makeStyles({
     }
 });
 
-function Dashboard() {
+function StatsPage() {
 
     const styles = useStyles();
 
@@ -113,24 +105,17 @@ function Dashboard() {
                         <ProgressBox rerend={progReload}/>
                     </div>
                 </div>
-                <div className="row mx-auto justify-content-between align-items-center">
-                    <div className="col-lg-9 col-md-12 col-sm-12  my-col">
-                        <HabitBox progRerender={progRerender}/>
-                    </div>
-
-                    <div className="col-3 d-md-none d-sm-none d-lg-block my-col">
-                        <MotiBox />
-                    </div>
-                </div>
+               
+                
                 <div className="row justify-content-center align-items-center">
-                    <div className="col-lg-6 col-sm-12 my-col">
+                    <div className="col-lg-6 col-sm-12 my-col" style={{height:"120%"}}>
                         <StatBox />
                     </div>
 
 
 
                     <div className="col-lg-6 col-sm-12 my-col">
-                        <CalBox />
+                    <StatBox />
                     </div>
                 </div>
 
@@ -143,4 +128,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard;
+export default StatsPage;

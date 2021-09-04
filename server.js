@@ -13,6 +13,8 @@ const deleteHabit = require('./routes/deleteHabit');
 const updatePercent = require('./routes/updatePercent');
 const verifyToken = require('./routes/verifyToken');
 const pageVerify = require('./routes/pageVerify');
+const editHabit = require("./routes/editHabit");
+const getProgress = require("./routes/getProgress")
 //const resetHabits = require('./routes/reset');
 
 
@@ -36,6 +38,8 @@ app.use('/api/', getHabits);
 app.use('/api/', deleteHabit);
 app.use('/api/', updatePercent);
 app.use('/api/', pageVerify);
+app.use('/api',editHabit);
+app.use('/api',getProgress);
 //app.use('/api/', resetHabits);
 
 

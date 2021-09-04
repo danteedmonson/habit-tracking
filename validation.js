@@ -3,7 +3,7 @@ const Joi = require("joi");
 
 const registerValidation = (data) => {
   const schema = Joi.object({
-    name: Joi.string().min(5).required(),
+    name: Joi.string().min(3).required(),
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(6).required(),
   });
@@ -59,7 +59,7 @@ const deleteValidation = (data) => {
 
 const editValidation = (data) => {
   const schema = Joi.object({
-    
+    _id: Joi.string().required(),
     Description: Joi.string().max(100).required(),
     Occurrence: Joi.object({
       Mon: Joi.bool().required(),

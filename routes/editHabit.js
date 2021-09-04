@@ -2,6 +2,7 @@ const router = require("express").Router(); // Import expres router
 const User = require("../models/User"); // Import Uer model aka get access to User Collection
 const verify = require("./verifyToken"); // Import Verify Middleware to verify JWT
 const ObjectID = require("mongodb").ObjectID; // Import MongoDB Object ID
+const { addCheckin, undoCheckin } = require("../models/updateCheckin");
 
 const { editValid } = require("../validation"); // Import the validation function
 
@@ -19,6 +20,21 @@ router.post("/editHabit", verify, async (req, res) => {
     const newTimesPer = req.body.TimesPer;
     const newOccur = req.body.Occurrence;
 
+    // update the Active property based on the edited habbit occurrence
+    const weekday = {
+      0: "Sun",
+      1: "Mon",
+      2: "Tues",
+      3: "Wed",
+      4: "Thurs",
+      5: "Fri",
+      6: "Sat",
+  };
+
+  const date = new Date();
+
+
+
     try {
       let user = await User.findOne({ _id: req.user });
 
@@ -30,8 +46,25 @@ router.post("/editHabit", verify, async (req, res) => {
       }
 
       const Progress = user.habits[index].Progress;
+      const CheckIns = user.habits[index].CheckIns;
+      const newActive = req.body.Occurrence[weekday[date.getDay()]];
+      console.log(newActive)
 
       let newPercent = Progress.UpdateCount < newTimesPer ? ((100 / newTimesPer) * Progress.UpdateCount) : 100;
+
+      if (newPercent < 100 && Progress.Percent == 100) {
+        // pop Checkin
+        undoCheckin(CheckIns)
+      }
+
+      if (newPercent == 100 && Progress.Percent < 100) {
+        // push Checkin
+        addCheckin(CheckIns)
+      }
+
+
+
+
 
       // Delete the habit from the database based on the habit ID
       await User.updateOne(
@@ -43,8 +76,10 @@ router.post("/editHabit", verify, async (req, res) => {
           $set: {
             "habits.$.Progress.Percent": newPercent,
             "habits.$.Progress.CurrDate": new Date(),
+            "habits.$.Active": newActive,
             "habits.$.Description": newDesc,
             "habits.$.Color": newColor,
+            "habits.$.CheckIns": CheckIns,
             "habits.$.TimesPer": newTimesPer,
             "habits.$.Occurrence": newOccur,
 

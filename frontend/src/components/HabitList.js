@@ -10,6 +10,7 @@ function HabitList(props) {
     const [loaded, setLoaded] = useState(false);
     const [page1, setPage1] = useState([]);
     const [page2, setPage2] = useState([]);
+    const [selected, setSelected] = useState(habits.length > 8 ? 1 : 0)
 
 
     useEffect(() => {
@@ -27,6 +28,7 @@ function HabitList(props) {
 
             }).then(res => {
                 setHabits(res.data);
+                
                 console.log(habits);
                 setLoaded(true);
 
@@ -38,9 +40,9 @@ function HabitList(props) {
 
         }
 
-    },[props.rerend])
+    }, [props.rerend])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (habits.length > 8) {
             setPage1(habits.slice(0, 8));
             setPage2(habits.slice(8, habits.length));
@@ -49,137 +51,155 @@ function HabitList(props) {
             setPage1(habits)
             console.log(habits)
         }
-        
-    },[habits, props.rerend])
 
-   
+    }, [habits, props.rerend])
+
+    useEffect(() => {
+        setHabits(habits)
+        setSelected(habits.length > 8 ? 1 : 0)
+       
+    })
 
 
-if (loaded && habits.length > 0) 
-    return (
-        <div>
-            { habits.length <= 8 ?
-            <Carousel
-                infiniteLoop="true"
-                showThumbs="false"
-                showArrows="true"
 
-            >
-                <div className="container ">
-                    <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
 
-                        {
-                            page1.map((habit, index) => {
-                                return ( 
-                                <div className="col-3 col-auto " key={index}>
-                                    
-                                    <Habit 
-                                        Active={habit.Active}
-                                        CheckIns={habit.CheckIns}
-                                        Color={habit.Color}
-                                        Description={habit.Description}
-                                        HabitName={habit.HabitName}
-                                        Icon={habit.Icon}
-                                        Occurrence={habit.Occurrence}
-                                        Progress={habit.Progress}
-                                        TimesPer={habit.TimesPer}
-                                        _id={habit._id}
-                                       />
 
-                                </div>
-                                )
-                            })
-                        }
-                        
-                    
+    if (loaded && habits.length > 0 && habits.length <= 8)
+        return (
+            <div>
+
+                <Carousel
+                    infiniteLoop="true"
+                    showThumbs="false"
+                    showArrows="true"
+                    selectedItem={selected}
+
+
+                >
+                    <div className="container ">
+                        <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
+
+                            {
+                                page1.map((habit, index) => {
+                                    return (
+                                        <div className="col-3 col-auto " key={index}>
+
+                                            <Habit
+                                                Active={habit.Active}
+                                                CheckIns={habit.CheckIns}
+                                                Color={habit.Color}
+                                                Description={habit.Description}
+                                                HabitName={habit.HabitName}
+                                                Icon={habit.Icon}
+                                                Occurrence={habit.Occurrence}
+                                                Progress={habit.Progress}
+                                                TimesPer={habit.TimesPer}
+                                                _id={habit._id}
+                                                rerender={props.rerender}
+                                                rerend={props.rerend}
+                                                progRerender={props.progRerender}
+                                            />
+
+                                        </div>
+                                    )
+                                })
+                            }
+
+
+                        </div>
                     </div>
-                </div>
-
-                
 
 
 
 
-            </Carousel> : 
 
-            <Carousel
-                infiniteLoop="true"
-                showThumbs="false"
-                showArrows="true"
 
-            >
-                <div className="container ">
-                    <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
-
-                        {
-                            page1.map((habit, index) => {
-                                return ( 
-                                <div className="col-3 col-auto " key={index}>
-                                    
-                                    <Habit 
-                                        Active={habit.Active}
-                                        CheckIns={habit.CheckIns}
-                                        Color={habit.Color}
-                                        Description={habit.Description}
-                                        HabitName={habit.HabitName}
-                                        Icon={habit.Icon}
-                                        Occurrence={habit.Occurrence}
-                                        Progress={habit.Progress}
-                                        TimesPer={habit.TimesPer}
-                                        _id={habit._id}/>
-
-                                </div>
-                                )
-                            })
-                        }
-                        
+                </Carousel>
+            </div>
+        )
+    else if (loaded && habits.length > 8)
+        return (
+            <div>
+                <Carousel
+                    infiniteLoop="true"
+                    showThumbs="false"
+                    showArrows="true"
+                    selectedItem={0}
                     
-                    </div>
-                </div>
-
-                <div className="container ">
-                    <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
-
-                        {
-                            page2.map((habit, index) => {
-                                return ( 
-                                <div className="col-3 col-auto " key={index}>
-                                    
-                                    <Habit 
-                                        Active={habit.Active}
-                                        CheckIns={habit.CheckIns}
-                                        Color={habit.Color}
-                                        Description={habit.Description}
-                                        HabitName={habit.HabitName}
-                                        Icon={habit.Icon}
-                                        Occurrence={habit.Occurrence}
-                                        Progress={habit.Progress}
-                                        TimesPer={habit.TimesPer}
-                                        _id={habit._id}/>
-
-                                </div>
-                                )
-                            })
-                        }
-                        
                     
+                >
+                    <div className="container ">
+                        <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
+
+                            {
+                                page1.map((habit, index) => {
+                                    return (
+                                        <div className="col-3 col-auto " key={index}>
+
+                                            <Habit
+                                                Active={habit.Active}
+                                                CheckIns={habit.CheckIns}
+                                                Color={habit.Color}
+                                                Description={habit.Description}
+                                                HabitName={habit.HabitName}
+                                                Icon={habit.Icon}
+                                                Occurrence={habit.Occurrence}
+                                                Progress={habit.Progress}
+                                                TimesPer={habit.TimesPer}
+                                                _id={habit._id}
+                                                rerender={props.rerender}
+                                                rerend={props.rerend}
+                                                progRerender={props.progRerender} />
+
+                                        </div>
+                                    )
+                                })
+                            }
+
+
+                        </div>
                     </div>
-                </div>
 
-                
+                    <div className="container ">
+                        <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
+
+                            {
+                                page2.map((habit, index) => {
+                                    return (
+                                        <div className="col-3 col-auto " key={index}>
+
+                                            <Habit
+                                                Active={habit.Active}
+                                                CheckIns={habit.CheckIns}
+                                                Color={habit.Color}
+                                                Description={habit.Description}
+                                                HabitName={habit.HabitName}
+                                                Icon={habit.Icon}
+                                                Occurrence={habit.Occurrence}
+                                                Progress={habit.Progress}
+                                                TimesPer={habit.TimesPer}
+                                                _id={habit._id}
+                                                rerender={props.rerender}
+                                                rerend={props.rerend}
+                                                progRerender={props.progRerender} />
+
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </Carousel>
+            </div>
+        )
 
 
 
 
-            </Carousel>
-            }
 
-            
 
-        </div>
-    )
-    else 
-    return (<div style={{color:"black"}}>yoooooo</div>)
+    else
+        return (<div style={{ color: "black" }}>yoooooo</div>)
 }
 
 export default HabitList;

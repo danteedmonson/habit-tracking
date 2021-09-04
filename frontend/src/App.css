@@ -1,5 +1,6 @@
 .App-container {
-  background-image: url("./media/wallpap.png");
+  background-image: url("./images/pastelbackground3.png");
+  background-size: cover;
 
   min-height: 100vh;
   display: flex;
@@ -8,6 +9,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -31,12 +33,16 @@
 }
 
 .my-container {
-  border: 15px solid #baa1a7;
+  border: 4px solid #000000;
   width: 10px;
-  background-color: #baa1a7;
-  border-radius: 27px;
+ 
+  border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.2); 
+
+
 }
 
 .dash-container {
@@ -45,24 +51,39 @@
 }
 
 .dashBox {
-  background-color: #baa1a7;
+  /* background-color: #baa1a7; */
   
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-bottom-right-radius: 27px;
-  border-bottom-left-radius: 27px;
-  border: 3px solid black;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  border-radius: 5px;
+  color: white;
+  
+  /* border: 1px solid black; */
   overflow: hidden;
-  font-family: 'Bungee'
- 
+  font-family: 'Roboto', sans-serif;
+  
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.2); 
+
+
 }
+
 
 #habitBox {
   width: 98.5%;
   display: flex;
+  height: 55vh;
   justify-content: center;
   align-items: center; 
   flex-direction: column;
   
+  
+}
+
+.frostedBackground {
+  filter: blur(4px);
+  position: absolute;
+  width: 100%;
+  height: 70%;
 }
 
 #progressBox {
@@ -72,17 +93,17 @@
 }
 
 .modal-content {
-  border-radius: 27px !important;
-  border: 3px solid black !important;
+  border-radius: 5px !important;
+  
 }
 
 .modal {
   overflow-y: auto;
 }
 
-.modal-open {
+/* .modal-open {
   overflow: auto;
-}
+} */
 
 .modal-open[style] {
   padding-right: 0px !important;
@@ -90,6 +111,7 @@
 
 #motiBox {
   width: 100%;
+  height: 55vh;
 }
 
 #calBox {
@@ -98,7 +120,7 @@
   margin-left: 2%;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  
   flex-direction: column;
 }
 
@@ -113,7 +135,7 @@
 .my-row {
   height: 7.4vh;
   max-width: 55.55vh;
-  background-color: #baa1a7;
+ 
 }
 
 .lesspadding {
@@ -173,7 +195,7 @@
   padding-top: 60px;
   margin-top: 43px;
   font-size: 20px;
-  font-family: "Bungee", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-right: 3px solid #dbabbe;
 }
 

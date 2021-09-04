@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-right: 0px !important;
 }
 
 code {
@@ -12,6 +13,23 @@ code {
     monospace;
 }
 
+
+
+.carousel-status, .control-dots, .thumbs-wrapper, .axis-vertical {
+  display: none !important;
+}
+
 .modal-content {
-  border-radius: 27;
+  background-color: transparent !important;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  color:white;
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 5px;
+
+}
+
+.MuiAppBar-root {
+  padding-right: 0px !important;
 }

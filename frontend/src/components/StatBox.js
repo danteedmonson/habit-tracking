@@ -9,9 +9,9 @@ function StatBox() {
 
     return (
         <div className="dashBox" id="calBox">
-            Stats
+            <div style={{paddingLeft:"20px", paddingTop:12, fontFamily:"Courgette", color:"#EDBBB4"}}>Statistics</div>
         
-            <div id="calBoxInner" style={{ height: "48.7vh", width:"100%",  backgroundColor:"white" }}>
+            <div id="calBoxInner" style={{ height: "48.7vh", width:"100%", }}>
                
                 <BarChart/>
             </div>

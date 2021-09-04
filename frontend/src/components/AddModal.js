@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/esm/Button';
-import IconsArr from './Icons';
+//import Button from 'react-bootstrap/esm/Button';
+//import { Button } from '@material-ui/core';
+import {iconArr} from './Icons';
 import axios from 'axios';
+import { createTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles';
+import { spacing } from "@material-ui/system";
+import Button from './Button';
 
 
 
@@ -21,13 +26,13 @@ function AddModal(props) {
     const [enableNext, setEnableNext] = useState(true)
     const [enableSave, setEnableSave] = useState(true)
 
-    const [mon, setMon] = useState(false);
-    const [tues, setTues] = useState(false);
-    const [wed, setWed] = useState(false);
-    const [thurs, setThurs] = useState(false);
-    const [fri, setFri] = useState(false);
-    const [sat, setSat] = useState(false);
-    const [sun, setSun] = useState(false);
+    const [mon, setMon] = useState(true);
+    const [tues, setTues] = useState(true);
+    const [wed, setWed] = useState(true);
+    const [thurs, setThurs] = useState(true);
+    const [fri, setFri] = useState(true);
+    const [sat, setSat] = useState(true);
+    const [sun, setSun] = useState(true);
 
 
     const [showIcons, setShowIcons] = useState(true);
@@ -43,6 +48,18 @@ function AddModal(props) {
     var search = '';
 
     const [message, setMessage] = useState('');
+
+    const theme = createTheme({
+        palette: {
+          action: {
+            disabledBackground: 'rgb(148,148,148,0.2)',
+            disabled: 'rgb(255,255,255,0.3)',
+            disabledOpacity: 1,
+            
+          
+          }
+        }
+      });
 
 
 
@@ -104,8 +121,10 @@ function AddModal(props) {
 
             }).then(res => {
                 console.log(res.data);
+                console.log("ADD MODDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
 
-                props.rerender()
+                props.rerender();
+                props.progRerender();
 
                 setTimeout(() => {
                     closeModal();
@@ -131,6 +150,15 @@ function AddModal(props) {
         setOccur("");
         setIcon(-1);
 
+        setMon(true);
+        setTues(true);
+        setWed(true);
+        setThurs(true);
+        setFri(true);
+        setSat(true);
+        setSun(true);
+
+
         props.onHide();
         setEnableNext(true)
         setEnableSave(true)
@@ -149,6 +177,8 @@ function AddModal(props) {
 
 
     return (
+        <>
+        <div className="frostedBackground"></div>
         <Modal
 
             scrollable
@@ -157,31 +187,39 @@ function AddModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            style={{backgroundColor:"transparent"}}
         >
 
             <Modal.Header
                 style=
                 {
                     {
-                        backgroundColor: "#baa1a7",
+                        
+                        overflow: "hidden",
+                      
+                        
+                        backdropFilter: "blur(10px)",
+                         
+                      
 
                     }
                 }>
                 <Modal.Title id="example-custom-modal-styling-title" >
-                    <h6 style={{ fontFamily: 'Bungee', fontSize: 25 }}>Create Habit</h6>
+                    <h6 style={{ fontFamily:"Courgette", color:"#EDBBB4", fontSize: 25 }}>Create Habit</h6>
                 </Modal.Title >
             </Modal.Header>
 
 
             {
                 showIcons ?
-                    <Modal.Body >
-                        <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Habit Name</h8>
+                    <Modal.Body 
+                        style={{backgroundColor:"transparent"}}>
+                        <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Habit Name</h8>
                         <input type="text" className="form-control" placeholder="E.g. Drink Water " value={habitName} onChange={(c) => setHabitName(c.target.value)} />
                         <br></br>
                         <br></br>
 
-                        <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Description</h8>
+                        <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Description</h8>
 
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={desc} onChange={(c) => setDesc(c.target.value)}></textarea>
 
@@ -189,7 +227,7 @@ function AddModal(props) {
 
                         <br></br>
                         <br></br>
-                        <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Occurrence</h8>
+                        <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Occurrence</h8>
                         <div className="container">
                             <div className="row">
                                 <div className="form-check col-3">
@@ -275,7 +313,7 @@ function AddModal(props) {
                         <br></br>
                         <br></br>
 
-                        <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Times Per Occurrence</h8>
+                        <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Times Per Occurrence</h8>
 
                         <select class="form-control" id="exampleFormControlSelect1" value={amount} onChange={(c) => setAmount(c.target.value)}>
                             <option hidden ></option>
@@ -292,7 +330,7 @@ function AddModal(props) {
 
                         <br></br>
                         <br></br>
-                        <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Choose A Color</h8>
+                        <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Choose A Color</h8>
                         <div className="container">
                             <div className="row" style={{ height: 38, marginTop: 10 }}>
                                 <div
@@ -332,7 +370,7 @@ function AddModal(props) {
                         <div className="container">
                             <div className="row">
                                 <div className="col">
-                                    <h8 style={{ fontFamily: 'Bungee', fontSize: 17 }}>Choose An Icon</h8>
+                                    <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Choose An Icon</h8>
 
                                 </div>
                             </div>
@@ -340,10 +378,12 @@ function AddModal(props) {
 
 
 
-                                {IconsArr.map((eachIcon, index) => (
+                                {iconArr.map((eachIcon, index) => (
                                     <div className="col-lg-2 col-sm-6">
                                         <div style={{ width: 100, height: 100, margin: "5%", padding: 10 }}>
-                                            <img style={{ width: "100%", marginTop: -5, borderRadius: 10, border: icon === index ? "3px solid #EDBBB4" : "0px solid #EDBBB4" }} src={eachIcon} alt="icon" key={index} onClick={() => setIcon(index)} />
+                                            <div style={{ width: "100%", marginTop: -5, borderRadius: 10, border: icon === index ? "3px solid #EDBBB4" : "0px solid #EDBBB4" }}  key={index} onClick={() => setIcon(index)} >
+                                                {eachIcon}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -360,13 +400,15 @@ function AddModal(props) {
             }
             <Modal.Footer
             >
-
-                {showIcons ? <Button onClick={() => setShowIcons(false)} variant="secondary" disabled={enableNext}>Next</Button>
-                    : <Button onClick={() => setShowIcons(true)} variant="secondary">Prev</Button>}
-                {showIcons ? <></> : <Button onClick={()=>addHabit()} variant="secondary" disabled={enableSave}>Save</Button>}
-                <Button onClick={closeModal} variant="secondary">Cancel</Button>
+                <ThemeProvider theme={theme}>
+                {showIcons ? <Button onClick={() => setShowIcons(false)} variant="contained" size="large" color="primary"  disabled={enableNext} mr={2} ml={2}>Next</Button>
+                    : <Button onClick={() => setShowIcons(true)} variant="contained" size="large">Prev</Button>}
+                {showIcons ? <></> : <Button onClick={()=>addHabit()} variant="contained" size="large" color="primary" disabled={enableSave} mr={2} ml={2}>Save</Button>}
+                <Button onClick={closeModal} variant="contained" size="large">Cancel</Button>
+                </ThemeProvider>
             </Modal.Footer>
         </Modal>
+        </>
     );
 }
 

@@ -3,13 +3,25 @@ import { Bar } from 'react-chartjs-2'
 import { defaults } from 'react-chartjs-2'
 import 'chartjs-plugin-datalabels';
 
-defaults.defaultFontFamily = "'Bungee', sans-serif";
-defaults.font.family = "'Bungee', sans-serif";
+ defaults.font.family = "'Roboto', sans-serif";
+ defaults.color = "white";
+ defaults.scale.display = true;
+ defaults.scale.grid.display = false;
+ 
+
+
 
 
 
 function BarChart(props) {
-    console.log(defaults)
+
+    function showD () {
+        console.log(defaults)
+    }
+    
+
+
+    
 
     var mon = 0, tues = 0, wed=0, thurs = 0, fri = 0, sat = 0, sun = 0
     var days = [mon, tues, wed, thurs, fri, sat, sun]
@@ -60,15 +72,16 @@ function BarChart(props) {
 
 
     return (
-        <div className="container" > 
+        <div className="container" onClick={showD}> 
         
             <div className="row" style={{ width: "100%" }} >
-                <div className="col" style={{fontFamily:"Bungee"}}>
+                <div className="col" style={{fontFamily:"Roboto", color:"white"}}>
                   
                     <Bar
                         data={{
                             labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
                             fontFamily: 'Bungee',
+                            color:'white',
                             fontSize: 30,
                             datasets: [
                                 {
@@ -88,8 +101,8 @@ function BarChart(props) {
                         var options={{
                             maintainAspectRatio: false,
                             scales: {
-                                yAxes: [{ gridLines: { display: false }, ticks: { fontSize: 12, fontFamily: "'Bungee', sans-serif", fontColor: '#000', fontStyle: '500', beginAtZero:'true' } }],
-                                xAxes: [{ gridLines: { display: false }, ticks: { fontSize: 12, fontFamily: "'Bungee', sans-serif", fontColor: '#000', fontStyle: '500' } }]
+                                yAxes: [{ gridLines: { display: false }, ticks: { fontSize: 12, fontFamily: "'Roboto', sans-serif", fontColor: '#fff', fontStyle: '500', beginAtZero:'true' } }],
+                                xAxes: [{ gridLines: { display: false }, ticks: { fontSize: 12, fontFamily: "'Roboto', sans-serif", fontColor: '#fff', fontStyle: '500' } }]
                             },
 
                             legend: {

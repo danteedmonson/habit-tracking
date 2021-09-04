@@ -17,6 +17,19 @@ router.post("/addHabit", verify, async (req, res) => {
     // generate a unique object ID for the new habit
     var habitID = mongoose.Types.ObjectId();
 
+    // update the Active property based on the edited habbit occurrence
+    const weekday = {
+      0: "Sun",
+      1: "Mon",
+      2: "Tues",
+      3: "Wed",
+      4: "Thurs",
+      5: "Fri",
+      6: "Sat",
+  };
+
+  const date = new Date();
+
     // place the properties, in the request body, in an object for the new habit
     // Also add the Progress Object and the CheckIns array to this object
     const newHab = {
@@ -27,7 +40,7 @@ router.post("/addHabit", verify, async (req, res) => {
       Color: req.body.Color,
       Occurrence: req.body.Occurrence,
       TimesPer: req.body.TimesPer,
-      Active: null,
+      Active: req.body.Occurrence[weekday[date.getDay()]],
       Progress: {
         Percent: 0,
         CurrDate: null,

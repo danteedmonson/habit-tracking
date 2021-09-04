@@ -19,15 +19,18 @@ function Calendar (props) {
     var days = [];
 
     const dayStyle = {
-        borderBottom: "1px solid black",
-        borderLeft: "1px solid black",
+        borderBottom: "1px solid white",
+        
+        borderLeft: "1px solid white",
         textAlign: "center",
         paddingTop: 5,
         fontSize: 12,
         cursor: "pointer",
-        color:"#EDBBB4"
+        color:"white"
 
     }
+
+ 
 
     const CalendarStyle = {
       display: "grid",
@@ -80,6 +83,7 @@ function Calendar (props) {
 
         <div style={CalendarStyle}>
             {days}
+            <div style={{borderLeft: "1px solid white",borderBottom: "1px solid white", width:"500%"}}></div>
             
         </div>
       
