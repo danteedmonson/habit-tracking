@@ -7,6 +7,7 @@ import 'chartjs-plugin-datalabels';
  defaults.color = "white";
  defaults.scale.display = true;
  defaults.scale.grid.display = false;
+ defaults.plugins.legend.display = false;
  
 
 
@@ -31,8 +32,8 @@ function BarChart(props) {
 
 
     if(typeof props.Checkins !== "undefined")
-    for (var i = 0; i < props.Checkins.length; i++) {
-        var date = new Date(props.Checkins[i].Date)
+    for (var i = 1; i < props.Checkins.length; i++) {
+        var date = new Date(props.Checkins[i].CurrDate)
       
 
         switch (date.getDay()) {
@@ -87,7 +88,7 @@ function BarChart(props) {
                                 {
 
                                     data: (typeof props.Checkins !== "undefined") ? [mon,tues,wed,thurs,fri,sat,sun]: [5,8,3,6,9,3,6],
-                                    backgroundColor: '#EDBBB4',
+                                    backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
                                     borderRadius: 5,
                                     border: 2,
                                     borderColor: "#000"

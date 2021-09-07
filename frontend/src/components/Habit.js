@@ -180,7 +180,8 @@ function Habit(props) {
                     >
                         <div  style={{ 
                             position: "absolute",
-                            backgroundColor: "black", 
+                            backgroundColor: "black",
+                            textAlign:"center", 
                             height: "15%", width: "100%", 
                             color: "white", fontFamily:"Roboto", 
                             fontWeight:"bold", fontSize: "13px", 
@@ -207,7 +208,7 @@ function Habit(props) {
                 onMouseLeave={() => setHover(false)}>
 
                 <div className="col-4 my-col d-flex justify-content-center lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={updateInfo}><Edit fill={props.Color} style={{ width: "1.8vw", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: props.Active && "pointer" }}   /></div>
-                <div className="col-4 my-col d-flex justify-content-center "  style={{ fontFamily: 'Roboto, sans-serif', fontWeight:"bold", fontSize: "1.8vmin", padding: 0, color:props.Color}} >{props.HabitName} </div>
+                <div className="col-4 my-col d-flex justify-content-center align-items-center"  style={{ fontFamily: 'Roboto, sans-serif', fontWeight:"bold", fontSize: "1.8vmin", padding: 0, color:props.Color}} >{props.HabitName} </div>
                 <div className="col-4 my-col lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={decreasePercent} ><Undo fill={props.Color} style={{width: "1.8vw", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: "pointer" }}  /></div>
             </div>
 

@@ -6,14 +6,6 @@ import CalBox from '../components/CalBox';
 import StatBox from '../components/StatBox';
 import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import ListItemText from '@material-ui/core/ListItemText';
-import DoneAllIcon from '@material-ui/icons/DoneAll';
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import SettingsIcon from '@material-ui/icons/Settings';
-import BarChartIcon from '@material-ui/icons/BarChart';
 import AppDrawer from '../components/AppDrawer';
 
 const useStyles = makeStyles({
@@ -78,7 +70,7 @@ function Dashboard() {
     }, []);
 
     const goLogin = () => {
-
+        window.location.href = '/';
     }
 
     if (verified === 0) {
@@ -91,7 +83,7 @@ function Dashboard() {
 
 
     return (
-        <div style={{ color: "black",width:"100%" }}>
+        <div style={{ color: "black" }}>
             <AppDrawer/>
             <br></br>
             <br></br>
@@ -124,7 +116,7 @@ function Dashboard() {
                 </div>
                 <div className="row justify-content-center align-items-center">
                     <div className="col-lg-6 col-sm-12 my-col">
-                        <StatBox />
+                        <StatBox GraphType="bar"/>
                     </div>
 
 

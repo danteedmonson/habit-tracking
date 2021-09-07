@@ -28,17 +28,17 @@ const iconArr =[
 function Icons (props) {
 
     const iArr =[
-        <Icon0 fill={props.color} style={{width:"50%"}}/>,
-        <Icon1 fill={props.color} style={{width:"50%"}}/>,
-        <Icon2 fill={props.color} style={{width:"50%"}}/>,
-        <Icon3 fill={props.color} style={{width:"50%"}}/>,
-        <Icon4 fill={props.color} style={{width:"50%"}}/>,
-        <Icon5 fill={props.color} style={{width:"50%"}}/>,
-        <Icon6 fill={props.color} style={{width:"50%"}}/>,
-        <Icon7 fill={props.color} style={{width:"50%"}}/>,
-        <Icon8 fill={props.color} style={{width:"50%"}}/>,
-        <Icon9 fill={props.color} style={{width:"50%"}}/>,
-        <Icon10 fill={props.color} style={{width:"50%"}}/>
+        <Icon0 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon1 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon2 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon3 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon4 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon5 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon6 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon7 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon8 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon9 fill={props.color} style={{width:"50%", height:"100%"}}/>,
+        <Icon10 fill={props.color} style={{width:"50%", height:"100%"}}/>
     ]
     
 

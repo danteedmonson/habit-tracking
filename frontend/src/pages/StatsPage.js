@@ -7,35 +7,33 @@ import StatBox from '../components/StatBox';
 import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
 import AppDrawer from '../components/AppDrawer';
+import { Carousel } from 'react-responsive-carousel';
+import { iconArr, Icons } from '../components/Icons';
 
 const useStyles = makeStyles({
     paper: {
         background: 'rgba(66, 66, 66, 0.5)',
         color: 'white',
-        marginTop:"3.37%",
+        marginTop: "3.37%",
         backdropFilter: "blur(10px)",
- 
+
     }
 });
 
 function StatsPage() {
+
+
 
     const styles = useStyles();
 
     const [verified, setVerified] = useState(0);
     const [drawerState, setDrawerState] = useState(false);
     const [progReload, setProgReload] = useState(false);
+    const [habits, setHabits] = useState([]);
+    const [color, setColor] = useState();
+    const [currentSlide, setCurrentSlide] = useState(0)
 
-    const progRerender = () => {
-        if (progReload === false){
-            setProgReload(true);
-            console.log("DASHBOARD REREND STATE CHANGE");
-        }
-        else{
-            setProgReload(false);
-            console.log("DASHBOARD REREND STATE CHANGE");
-        }
-    };
+
 
 
     useEffect(() => {
@@ -53,7 +51,8 @@ function StatsPage() {
 
             }).then(res => {
                 console.log(res.data);
-                setVerified(1);
+
+                getHabits();
                 // store the returned token into local storage
 
 
@@ -69,6 +68,38 @@ function StatsPage() {
 
     }, []);
 
+    function getHabits() {
+        const jwt = localStorage.getItem('jwt');
+
+        try {
+            axios({
+
+                method: 'post',
+                url: 'http://localhost:5000/api/getHabits',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': jwt
+                },
+
+            }).then(res => {
+                setHabits(res.data);
+                console.log(res.data);
+                console.log("STATS PAGE")
+                setVerified(1);
+
+
+
+
+
+
+
+            }).catch(err => console.log("hello"))
+        } catch (err) {
+
+        }
+
+    }
+
     const goLogin = () => {
 
     }
@@ -83,13 +114,14 @@ function StatsPage() {
 
 
     return (
-        <div style={{ color: "black", width:"100%" }}>
-            <AppDrawer/>
+        <div style={{ color: "black", width: "100%" }}>
+            <div className="frostedBackground"></div>
+            <AppDrawer />
             <br></br>
             <br></br>
             <br></br>
-            <div className="container" style={{width:"100%"}}>
-                        {/* <div className="row">
+            <div className="container" style={{ width: "100%" }}>
+                {/* <div className="row">
                             <div className="col">
                             <ProgressBox />
                             </div>
@@ -101,21 +133,76 @@ function StatsPage() {
                     </div> */}
 
                 <div className="row mx-auto justify-content-center align-items-center">
-                    <div className="col-12 my-col">
-                        <ProgressBox rerend={progReload}/>
+                    <div className="col-4 my-col">
+                        <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
+                            <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
+                            <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].Streak}</h2>
+                        </div>
+                        {/* <ProgressBox rerend={progReload}/> */}
+                    </div>
+                    <div className="col-4 my-col">
+                        <div className="dashBox" style={{ height: "18vh" }}>
+                            <Carousel
+                                infiniteLoop="true"
+                                showThumbs="false"
+                                showArrows="true"
+                                onChange={index => setCurrentSlide(index)}>
+
+                                {habits.map((habit, index) => {
+                                    return (
+                                        <div key={index} style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <div style={{ height: "12vh", width: "12vh" }}>
+
+                                                <Icons color={habit.Color} icon={habit.Icon} />
+                                                <div style={{ marginTop: "-17%", fontFamily: "Roboto", color: habit.Color }}>{habit.HabitName}</div>
+
+
+                                            </div>
+                                        </div>
+                                    )
+
+                                })}
+
+
+
+
+                            </Carousel>
+
+
+                            {/* <div>{habits[0].HabitName}</div> */}
+
+
+
+                        </div>
+                        {/* <ProgressBox rerend={progReload}/> */}
+                    </div>
+                    <div className="col-4 my-col">
+                        <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
+                            <h3 style={{ fontFamily: "Courgette" }}>Longest Streak:</h3>
+                            <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].LongestStreak}</h2>
+
+                        </div>
+                        {/* <ProgressBox rerend={progReload}/> */}
                     </div>
                 </div>
-               
-                
+                {/* <div className="row justify-content-center align-items-center">
+                    <div className="col-4 my-col">
+                        <div className="dashBox" style={{ height: "13vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
+                        </div>
+                    </div>
+
+                </div> */}
+
+
                 <div className="row justify-content-center align-items-center">
-                    <div className="col-lg-6 col-sm-12 my-col" style={{height:"120%"}}>
-                        <StatBox />
+                    <div className="col-lg-6 col-sm-12 my-col" style={{ height: "120%" }}>
+                        <StatBox GraphType="bar" Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
                     </div>
 
 
 
                     <div className="col-lg-6 col-sm-12 my-col">
-                    <StatBox />
+                        <StatBox GraphType="line" Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
                     </div>
                 </div>
 

@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
 import StatsPage from "./pages/StatsPage";
+import HabitsPage from "./pages/HabitsPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path ="/Stats" exact>
               <StatsPage />
+            </Route>
+            <Route path ="/Habits" exact>
+              <HabitsPage />
             </Route>
           </Switch>
         </Router>

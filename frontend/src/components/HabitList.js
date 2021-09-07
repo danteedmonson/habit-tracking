@@ -64,7 +64,7 @@ function HabitList(props) {
 
 
 
-    if (loaded && habits.length > 0 && habits.length <= 8)
+    if (loaded && habits.length > 0 && habits.length <= 8 && !props.hPage)
         return (
             <div>
 
@@ -117,7 +117,7 @@ function HabitList(props) {
                 </Carousel>
             </div>
         )
-    else if (loaded && habits.length > 8)
+    else if (loaded && habits.length > 8 && !props.hPage)
         return (
             <div>
                 <Carousel
@@ -196,10 +196,42 @@ function HabitList(props) {
 
 
 
+    else if (props.hPage)
+    return(
+        <div className="container ">
+                        <div className="row justify-content-start mx-auto" style={{ height: "100%", }} >
 
+                            {
+                                habits.map((habit, index) => {
+                                    return (
+                                        <div className="col-3 col-auto " key={index}>
+
+                                            <Habit
+                                                Active={habit.Active}
+                                                CheckIns={habit.CheckIns}
+                                                Color={habit.Color}
+                                                Description={habit.Description}
+                                                HabitName={habit.HabitName}
+                                                Icon={habit.Icon}
+                                                Occurrence={habit.Occurrence}
+                                                Progress={habit.Progress}
+                                                TimesPer={habit.TimesPer}
+                                                _id={habit._id}
+                                                rerender={props.rerender}
+                                                rerend={props.rerend}
+                                                progRerender={props.progRerender} />
+
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+
+    )
 
     else
-        return (<div style={{ color: "black" }}>yoooooo</div>)
+        return (<div style={{ color: "black" }}>loading</div>)
 }
 
 export default HabitList;

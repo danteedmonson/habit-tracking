@@ -24,8 +24,8 @@ function HabitBox(props) {
 
     return (
         <>
-            <div className="frostedBackground"></div>
-            <div className="dashBox" id="habitBox">
+            {/* <div className="frostedBackground"></div> */}
+            <div className="dashBox" id= {props.hPage ? "habitPageBox" : "habitBox"}>
                 <div className="container">
                     <div className="row justify-content-between" style={{height:"10%"}}>
                         <div className="col-auto" style={{ marginLeft: -11.25, paddingLeft:"20px", paddingTop:12, fontFamily:"Courgette", color:"#EDBBB4" }}>Habits</div>
@@ -54,9 +54,9 @@ function HabitBox(props) {
                     </div>
                 </div>
 
-                <div style={{ height: "90%", width: "100%", borderRadius: 0 }}>
-                    <br></br>
-                    <HabitList rerend={rerend} rerender={rerender} progRerender={props.progRerender} />
+                <div style={{  width: "100%", height:"90%", borderRadius: 0, paddingBottom:"0px !important", marginBottom:"0px !important", marginTop:10 }}>
+                   
+                    <HabitList rerend={rerend} rerender={rerender} progRerender={props.progRerender} hPage={props.hPage}/>
                 </div>
             </div>
             <AddModal

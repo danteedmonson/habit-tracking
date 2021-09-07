@@ -178,7 +178,7 @@ function AddModal(props) {
 
     return (
         <>
-        <div className="frostedBackground"></div>
+        {/* <div className="frostedBackground"></div> */}
         <Modal
 
             scrollable
@@ -187,7 +187,7 @@ function AddModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            style={{backgroundColor:"transparent"}}
+            style={{backgroundColor:"transparent", height:"84%", marginTop:"5%"}}
         >
 
             <Modal.Header
