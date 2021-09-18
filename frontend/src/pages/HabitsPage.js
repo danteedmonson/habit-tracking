@@ -45,7 +45,7 @@ function HabitsPage() {
             axios({
 
                 method: 'post',
-                url: 'http://localhost:5000/api/pageVerify',
+                url: 'http://habeuro.com/api/pageVerify',
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': jwt

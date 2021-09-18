@@ -56,7 +56,7 @@ function Habit(props) {
                 axios({
 
                     method: 'post',
-                    url: 'http://localhost:5000/api/updatePercent',
+                    url: 'http://habeuro.com/api/updatePercent',
                     data: dataInfo,
                     headers: {
                         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ function Habit(props) {
                 axios({
 
                     method: 'post',
-                    url: 'http://localhost:5000/api/undoPercent',
+                    url: 'http://habeuro.com/api/undoPercent',
                     data: dataInfo,
                     headers: {
                         'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ function Habit(props) {
             axios({
 
                 method: 'post',
-                url: 'http://localhost:5000/api/getStreak',
+                url: 'http://habeuro.com/api/getStreak',
                 data: dataInfo,
                 headers: {
                     'Content-Type': 'application/json',

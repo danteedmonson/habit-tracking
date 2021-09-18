@@ -39,7 +39,7 @@ function ProgressBox(props) {
         axios({
 
             method: 'post',
-            url: 'http://localhost:5000/api/getProgress',
+            url: 'http://habeuro.com/api/getProgress',
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt

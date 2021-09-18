@@ -129,7 +129,7 @@ function EditModal(props) {
         axios({
 
             method: 'post',
-            url: 'http://localhost:5000/api/editHabit',
+            url: 'http://habeuro.com/api/editHabit',
             data: habitData,
             headers: {
                 'Content-Type': 'application/json',

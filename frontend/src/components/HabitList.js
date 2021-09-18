@@ -20,7 +20,7 @@ function HabitList(props) {
             axios({
 
                 method: 'post',
-                url: 'http://localhost:5000/api/getHabits',
+                url: 'http://habeuro.com/api/getHabits',
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': jwt
