@@ -14,16 +14,15 @@ import axios from 'axios';
 function EditModal(props) {
 
   const [color, setColor] = useState(props.Color);
-  const [habitName, setHabitName] = useState('');
+
   const [desc, setDesc] = useState(props.Description);
   const [occur, setOccur] = useState(props.Occurence);
   const [amount, setAmount] = useState(props.TimesPer);
-  const [icon, setIcon] = useState(-1);
   const [streak, setStreak] = useState(props.Streak)
   const [lstreak, setLStreak] = useState(props.LongestStreak);
 
 
-  const [showIcons, setShowIcons] = useState(true);
+
 
   const [mon, setMon] = useState(props.Occurrence.Mon);
   const [tues, setTues] = useState(props.Occurrence.Tues);
@@ -32,7 +31,6 @@ function EditModal(props) {
   const [fri, setFri] = useState(props.Occurrence.Fri);
   const [sat, setSat] = useState(props.Occurrence.Sat);
   const [sun, setSun] = useState(props.Occurrence.Sun);
-  let date = new Date();
 
 
 
@@ -40,7 +38,8 @@ function EditModal(props) {
 
 
 
-  const [message, setMessage] = useState('');
+
+ 
   const [editMode, setEditMode] = useState(false);
 
 
@@ -64,11 +63,7 @@ function EditModal(props) {
     }
     )
 
-    
-
-      try {
         axios({
-
             method: 'post',
             url: 'http://localhost:5000/api/deleteHabit',
             data: habitData,
@@ -76,29 +71,16 @@ function EditModal(props) {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
             },
-
         }).then(res => {
             console.log(res.data);
-
             props.rerender()
             props.progRerender()
-
             closeModal();
-            setTimeout(() => {
-                
+            setTimeout(() => { 
                 setEditMode(false);
               }, 300);
-
-
-
-
-
-
         }).catch(err => console.log("hello"))
-    } catch (err) {
-
-
-    }
+    
 
   }
   function editHabit() {
@@ -222,8 +204,6 @@ function EditModal(props) {
           <div className="row justify-content-center align-items-center" style={{ height: 140 }}>
             <div className="col-6 " align="center" style={{ width: 140, height: 140, paddingTop: 30, height: "100%" }}>
               {iconArr[props.Icon]}
-              {/* <Icons color="white" icon={props.Icon}/> */}
-              {/* <img style={{  marginTop: 17, maxWidth:140, maxHeight:110 }} src={iconArr[props.Icon]} alt="habit"/> */}
             </div>
 
           </div>
@@ -245,16 +225,7 @@ function EditModal(props) {
           }
           <br></br>
 
-          {/* <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Occurrence</h8>
 
-           { !editMode ? <p><strong>{amount} time(s) {occur}</strong></p> :
-
-            <select class="form-control" id="exampleFormControlSelect1" value={occur} onChange={(c) => setOccur(c.target.value)}>
-              <option>daily</option>
-              <option>weekly</option>
-            </select>
-
-            } */}
 
 
           {editMode && <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Occurrence</h8>}
@@ -404,33 +375,6 @@ function EditModal(props) {
         </Modal.Body>
 
 
-
-        //   <Modal.Body scrollable>
-        //     <div className="container">
-        //       <div className="row">
-        //         <div className="col">
-        //           <h8 style={{ fontFamily: 'Roboto', fontSize: 17 }}>Choose An Icon</h8>
-
-        //         </div>
-        //       </div>
-        //       <div className="row" style={{marginTop: 40}}>
-
-
-
-        //          { IconsArr.map((eachIcon, index) => (
-        //           <div className="col-lg-2 col-sm-6">
-        //           <div style={{ width: 100, height: 100, margin:"5%", padding:10 }}>
-        //             <img style={{ width: "100%", marginTop: -5, borderRadius:10 ,border: icon === index ? "3px solid #EDBBB4" : "0px solid #EDBBB4"  }} src={eachIcon} alt="icon" key={index} onClick={() => setIcon(index)}/>
-        //           </div>
-        //         </div>
-
-        //         ))}
-        //       </div>
-        //     </div>
-
-        //         <div>{tok}</div>
-
-        //   </Modal.Body>
 
 
 

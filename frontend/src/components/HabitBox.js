@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import HabitList from "./HabitList";
 import AddModal from "./AddModal";
 import Button from "react-bootstrap/esm/Button";
 
 function HabitBox(props) {
-    const [hover, setHover] = useState(false);
     const [modalShow, setModalShow] = React.useState(false);
     const [rerend, setRerend] = useState(false);
 
@@ -24,22 +23,20 @@ function HabitBox(props) {
 
     return (
         <>
-            {/* <div className="frostedBackground"></div> */}
-            <div className="dashBox" id= {props.hPage ? "habitPageBox" : "habitBox"}>
-                <div className="container">
-                    <div className="row justify-content-between" style={{height:"10%"}}>
-                        <div className="col-auto" style={{ marginLeft: -11.25, paddingLeft:"20px", paddingTop:12, fontFamily:"Courgette", color:"#EDBBB4" }}>Habits</div>
-
-                        <div className="col-lg-1 col-md-2 col-sm-2">
-                            <Button
+    
+            <div className="dashBox"  id= {props.hPage ? "habitPageBox" : "habitBox"}>
+            <div  style={{ position:"absolute", left: 20, top:12, fontFamily:"Courgette", color:"#EDBBB4" }}>Habits</div>
+            <Button
                                 variant="secondary"
                                 onClick={() => setModalShow(true)}
                                 style={{
                                     color: "white",
                                     backgroundColor: "transparent",
-                                    width: "100%",
-                                    marginTop: "-7px",
-                                    height: "120%",
+                                    width: "40px",
+                                    position: "absolute",
+                                    top: "-7px",
+                                    right: 20,
+                                    height: "50px",
                                     border: "3px solid white",
                                     fontSize: 20,
                                     fontWeight: "bold",
@@ -50,11 +47,9 @@ function HabitBox(props) {
                             >
                                 +
                             </Button>
-                        </div>
-                    </div>
-                </div>
+               
 
-                <div style={{  width: "100%", height:"90%", borderRadius: 0, paddingBottom:"0px !important", marginBottom:"0px !important", marginTop:10 }}>
+                <div style={{  position: "absolute",width: "100%", height:"70%", borderRadius: 0, bottom:"0 !important", marginBottom:"0px !important", bottom:15 }}>
                    
                     <HabitList rerend={rerend} rerender={rerender} progRerender={props.progRerender} hPage={props.hPage}/>
                 </div>
@@ -69,13 +64,6 @@ function HabitBox(props) {
     );
 }
 
-const addStyle = {
-    borderRadius: 15,
-    border: "2px solid white",
-    width: "10%",
-    textAlign: "center",
-    color: "white",
-    backgroundImage: "linear-gradient(to right, #baa1a7 , #AEC6CF)",
-};
+
 
 export default HabitBox;

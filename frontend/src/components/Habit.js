@@ -146,7 +146,7 @@ function Habit(props) {
 
 
     return (
-        <div  className="container-fluid, my-habit " style={{marginBottom: 40, width: "100%", opacity: props.Active ? 1 : 0.5 }}>
+        <div  className="container-fluid, my-habit " style={{marginBottom: 0, width: "100%", opacity: props.Active ? 1 : 0.5 }}>
 
             <div style={{ backgroundColor: "black" }}></div>
 
@@ -207,9 +207,9 @@ function Habit(props) {
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}>
 
-                <div className="col-4 my-col d-flex justify-content-center lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={updateInfo}><Edit fill={props.Color} style={{ width: "1.8vw", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: props.Active && "pointer" }}   /></div>
+                <div className="col-4 my-col d-flex justify-content-center lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={updateInfo}><Edit fill={props.Color} style={{ width: "20px", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: props.Active && "pointer" }}   /></div>
                 <div className="col-4 my-col d-flex justify-content-center align-items-center"  style={{ fontFamily: 'Roboto, sans-serif', fontWeight:"bold", fontSize: "1.8vmin", padding: 0, color:props.Color}} >{props.HabitName} </div>
-                <div className="col-4 my-col lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={decreasePercent} ><Undo fill={props.Color} style={{width: "1.8vw", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: "pointer" }}  /></div>
+                <div className="col-4 my-col lesspadding" style={{ cursor: props.Active && "pointer" }} onClick={decreasePercent} ><Undo fill={props.Color} style={{width: "20px", marginTop: 10, opacity: hover && props.Active ? 1 : 0, cursor: "pointer" }}  /></div>
             </div>
 
             <EditModal

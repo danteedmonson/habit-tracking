@@ -31,6 +31,7 @@ function LineGraph(props) {
     for (var i = 1; i < props.Checkins.length; i++) {
         var date = new Date(props.Checkins[i].CurrDate)
 
+
         console.log(date.getHours())
 
         switch (date.getHours()) {
@@ -111,6 +112,8 @@ function LineGraph(props) {
                 break;
             case 23:
                 pm11=pm11 + 1
+                break;
+            default:
                 break;
             
         }

@@ -5,27 +5,18 @@ import MotiBox from '../components/MotiBox';
 import CalBox from '../components/CalBox';
 import StatBox from '../components/StatBox';
 import axios from 'axios';
-import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
 import AppDrawer from '../components/AppDrawer';
+import { useNavigate } from "react-router";
 
-const useStyles = makeStyles({
-    paper: {
-        background: 'rgba(66, 66, 66, 0.5)',
-        color: 'white',
-        marginTop:"3.37%",
-        backdropFilter: "blur(10px)",
- 
-    }
-});
+
 
 function Dashboard() {
 
-    const styles = useStyles();
+ 
 
     const [verified, setVerified] = useState(0);
-    const [drawerState, setDrawerState] = useState(false);
     const [progReload, setProgReload] = useState(false);
-
+    const navigate = useNavigate();
     const progRerender = () => {
         if (progReload === false){
             setProgReload(true);
@@ -41,7 +32,7 @@ function Dashboard() {
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
 
-        try {
+        
             axios({
 
                 method: 'post',
@@ -55,23 +46,15 @@ function Dashboard() {
                 console.log(res.data);
                 setVerified(1);
                 // store the returned token into local storage
-
-
-
-
-            }).catch(err => window.location.href = '/')
-        } catch (err) {
-            window.location.href = '/';
-        }
+            }).catch(err => navigate("../", { replace: true }))
+       
 
 
 
 
     }, []);
 
-    const goLogin = () => {
-        window.location.href = '/';
-    }
+
 
     if (verified === 0) {
         return (
@@ -79,26 +62,14 @@ function Dashboard() {
         )
     }
 
-
-
-
     return (
-        <div style={{ color: "black" }}>
+        <div style={{ color: "black", width:"70%", userSelect: "none" }}>
             <AppDrawer/>
             <br></br>
             <br></br>
             <br></br>
-            <div className="container">
-                {/* <div className="row">
-                    <div className="col">
-                    <ProgressBox />
-                    </div>
-                </div>
-                <div className="row">
-                    <HabitBox />
-                </div>
-
-            </div> */}
+            <div className="container" style={{width:"100%"}}>
+            
 
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-12 my-col">

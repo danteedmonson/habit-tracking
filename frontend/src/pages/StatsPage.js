@@ -38,30 +38,18 @@ function StatsPage() {
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
-
-        try {
-            axios({
-
-                method: 'post',
-                url: 'http://localhost:5000/api/pageVerify',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'auth-token': jwt
-                },
-
-            }).then(res => {
-                console.log(res.data);
-
-                getHabits();
-                // store the returned token into local storage
-
-
-
-
-            }).catch(err => window.location.href = '/')
-        } catch (err) {
-            window.location.href = '/';
-        }
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/api/pageVerify',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': jwt
+            },
+        }).then(res => {
+            console.log(res.data);
+            getHabits();
+            // store the returned token into local storage
+        }).catch(err => window.location.href = '/')
 
 
 
@@ -70,49 +58,27 @@ function StatsPage() {
 
     function getHabits() {
         const jwt = localStorage.getItem('jwt');
-
-        try {
-            axios({
-
-                method: 'post',
-                url: 'http://localhost:5000/api/getHabits',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'auth-token': jwt
-                },
-
-            }).then(res => {
-                setHabits(res.data);
-                console.log(res.data);
-                console.log("STATS PAGE")
-                setVerified(1);
-
-
-
-
-
-
-
-            }).catch(err => console.log("hello"))
-        } catch (err) {
-
-        }
-
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/api/getHabits',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': jwt
+            },
+        }).then(res => {
+            setHabits(res.data);
+            console.log(res.data);
+            console.log("STATS PAGE")
+            setVerified(1);
+        }).catch(err => console.log("hello"))
     }
 
-    const goLogin = () => {
-
-    }
 
     if (verified === 0) {
         return (
             <div></div>
         )
     }
-
-
-
-
     return (
         <div style={{ color: "black", width: "100%" }}>
             <div className="frostedBackground"></div>
@@ -121,16 +87,7 @@ function StatsPage() {
             <br></br>
             <br></br>
             <div className="container" style={{ width: "100%" }}>
-                {/* <div className="row">
-                            <div className="col">
-                            <ProgressBox />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <HabitBox />
-                        </div>
 
-                    </div> */}
 
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-4 my-col">
@@ -138,7 +95,7 @@ function StatsPage() {
                             <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].Streak}</h2>
                         </div>
-                        {/* <ProgressBox rerend={progReload}/> */}
+
                     </div>
                     <div className="col-4 my-col">
                         <div className="dashBox" style={{ height: "18vh" }}>
@@ -155,26 +112,13 @@ function StatsPage() {
 
                                                 <Icons color={habit.Color} icon={habit.Icon} />
                                                 <div style={{ marginTop: "-17%", fontFamily: "Roboto", color: habit.Color }}>{habit.HabitName}</div>
-
-
                                             </div>
                                         </div>
                                     )
 
                                 })}
-
-
-
-
                             </Carousel>
-
-
-                            {/* <div>{habits[0].HabitName}</div> */}
-
-
-
                         </div>
-                        {/* <ProgressBox rerend={progReload}/> */}
                     </div>
                     <div className="col-4 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
@@ -182,16 +126,10 @@ function StatsPage() {
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].LongestStreak}</h2>
 
                         </div>
-                        {/* <ProgressBox rerend={progReload}/> */}
+
                     </div>
                 </div>
-                {/* <div className="row justify-content-center align-items-center">
-                    <div className="col-4 my-col">
-                        <div className="dashBox" style={{ height: "13vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
-                        </div>
-                    </div>
 
-                </div> */}
 
 
                 <div className="row justify-content-center align-items-center">

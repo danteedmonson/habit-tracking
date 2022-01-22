@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/esm/Button';
+import { Button } from '@material-ui/core';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { Checkmark } from 'react-checkmark';
 import video from '../media/TheCall.mp4';
 import backgroundOne from '../images/wallpaperflare.com_wallpaper1.png';
+import { useNavigate } from "react-router";
 
 
 
@@ -17,6 +18,23 @@ function RegisterPage() {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const jwt = localStorage.getItem('jwt');
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/api/pageVerify',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': jwt
+            },
+        }).then(res => {
+            console.log(res.data);
+            goDashboard();
+            // store the returned token into local storage
+        }).catch(err => console.log(err))
+    }, []);
 
     const register = () => {
 
@@ -25,9 +43,7 @@ function RegisterPage() {
             password: password,
             name: firstName + " " + lastName
         })
-        try {
             axios({
-
                 method: 'post',
                 url: 'http://localhost:5000/api/user/register',
                 data: loginInfo,
@@ -37,18 +53,40 @@ function RegisterPage() {
 
             }).then(res => {
                 console.log(res.data);
+                login();
 
             }).catch(err => setMessage(err.response.data))
-        } catch (err) {
-            setMessage(err.response.data)
-        }
+    }
 
+    const login = () => {
 
+        const loginInfo = JSON.stringify({
+            email: email,
+            password: password
+        })
+            axios({
+                method: 'post',
+                url: 'http://habeuro.com/api/user/login',
+                data: loginInfo,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(res => {
+                console.log(res.data + "YOOOO");
+                // store the returned token into local storage
+                const jwt = res.data;
+                localStorage.setItem('jwt', jwt);
+                goDashboard();
+            }).catch(err => setMessage(err.response.data))
     }
 
     const goLogin = async event => {
         event.preventDefault();
-        window.location.href = '/';
+        navigate("../", { replace: true });
+    }
+
+    const goDashboard = () => {
+        navigate("../dashboard", { replace: true });
     }
 
 
@@ -64,62 +102,18 @@ function RegisterPage() {
 
                         <div className="col col-auto w3-animate-right" style={{ width: "55.55vh" }}>
 
-                            <div className="row my-row justify-content-center align-items-start " >
-                                <div className="col-md-6 col-sm-6 my-col">
+                        <h4 className="text-center" style={{ fontFamily: "Courgette", fontSize: 19, marginTop: 7.5, marginBottom:30 }}>Register to Get Started!</h4>
+ 
 
-                                </div>
-
-                            </div>
-
-                            <div className="row my-row justify-content-center align-items-center" style={{ height: "10.19vh" }} >
-                                <div className="col-md-6 col-sm-6 my-col">
-                                    <h4 className="text-center" style={{ fontFamily:"Courgette", fontSize: 25 }}>Register to Get Started!</h4>
-                                </div>
-                            </div>
-
-                            <div className="row my-row justify-content-center align-items-center " >
-                                <div className="col-md-8 col-sm-6 my-col">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="First Name "  onChange={(c) => setFirstName(c.target.value)}/>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="row my-row justify-content-center align-items-center " >
-                                <div className="col-md-8 col-sm-6 my-col">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Last Name "  onChange={(c) => setLastName(c.target.value)}/>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="row my-row justify-content-center align-items-center " >
-                                <div className="col-md-8 col-sm-6 my-col">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Email " onChange={(c) => setEmail(c.target.value)} />
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="row my-row justify-content-center align-items-center ">
-                                <div className="col-md-8 col-sm-6 my-col">
-                                    <div className="form-group">
-
-                                        <input type="password" className="form-control" placeholder="Password" onChange={(c) => setPassword(c.target.value)} />
-
-                                    </div>
-                                </div>
-
-                            </div>
+                            <div style={{ display: "flex", alignItems: "center", justifyContent:"space-between", flexDirection: "column", marginTop: 15, height:200, marginBottom:30 }} >
+                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="First Name" variant="outlined" onChange={(c) => setFirstName(c.target.value)} margin="normal" size="small" />
+                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Last Name" variant="outlined" onChange={(c) => setLastName(c.target.value)} margin="normal" size="small" />
+                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Email" variant="outlined"  autoComplete="off" onChange={(c) => setEmail(c.target.value)} margin="normal" size="small" />
+                            <input style={{ width:"70%"}}   className="form-control" type="password" placeholder="Password" variant="outlined" autoComplete="off" onChange={(c) => setPassword(c.target.value)} size="small" />
+                        </div>
                             <div className="row my-row justify-content-center align-items-center ">
                                 <div className="col-5 col my-col col-auto">
-                                    <Button variant="secondary" size="lg" onClick={register} style={{ width: "100%" }} block>Register</Button>
+                                    <Button variant="contained" size="lg" onClick={register} style={{ width: "100%" }} block>Register</Button>
 
                                     <span id="loginResult"><p>{message}</p></span>
                                 </div>

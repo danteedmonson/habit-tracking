@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import HabitList from './HabitList';
 import quotes from './Quotes';
@@ -6,20 +6,18 @@ import quotes from './Quotes';
 function MotiBox() {
 
 
+    const [quote, setQuote] = useState({ q: quotes[Math.floor(Math.random() * 50)].q, a: quotes[Math.floor(Math.random() * 50)].a })
 
     return (
         <div className="dashBox" id="motiBox">
-            <div style={{paddingLeft:"20px", paddingTop:12, fontFamily:"Courgette", color:"#EDBBB4"}}>Motivation</div>
-        
-            <div style={{ height: "48.7vh", width:"100%", fontFamily:"Roboto", textAlign:"left", padding:20, fontSize:"10vw" }}>
-             <div style={{ width: "80vw", height:"100%",}}>
-                 <div style={{width:"24%", display:"flex", justifyContent:"center", flexDirection:"column", height:"80%"}}>
-                <h3><i>{quotes[Math.floor(Math.random() * 50)].q}</i></h3>
-                <h3><i>- {quotes[Math.floor(Math.random() * 50)].a}</i></h3>
-                </div>
-                </div>
+            <div style={{ left: "20px", top: 12, fontFamily: "Courgette", color: "#EDBBB4", position:"absolute" }}>Motivation</div>
 
-            </div>
+            
+                    <div style={{  position:"absolute", top:"20%", bottom:"40%", left:0, right:0, margin:10, fontSize:15 }}>
+                        <p><i>{quote.q}</i></p>
+                        <p><i>- {quote.a}</i></p>
+                    </div>
+            
         </div>
     )
 }

@@ -112,7 +112,7 @@ function AddModal(props) {
             axios({
 
                 method: 'post',
-                url: 'http://localhost:5000/api/addHabit',
+                url: 'http://habeuro.com/api/addHabit',
                 data: habitData,
                 headers: {
                     'Content-Type': 'application/json',

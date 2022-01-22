@@ -8,6 +8,8 @@ import { Checkmark } from 'react-checkmark';
 import video from '../media/into-the-valley.mp4';
 import backgroundTwo from '../images/wallpaperflare.com_wallpaper2.png';
 import TextField from '@material-ui/core/TextField';
+import { useNavigate } from "react-router";
+
 
 
 
@@ -19,39 +21,37 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const [verified, setVerified] = useState(0);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
- 
-        try {
-         axios({
- 
-             method: 'post',
-             url: 'http://localhost:5000/api/pageVerify',
-             headers: {
-                 'Content-Type': 'application/json',
-                 'auth-token': jwt
-             },
- 
-         }).then(res => {
-             console.log(res.data);
-             setVerified(1);
-             window.location.href = '/dashboard';
-             // store the returned token into local storage
-            
- 
-           
- 
-         }).catch(err =>  setVerified(2))
-     } catch (err) {
-        setVerified(2);
-     }
- 
- 
-        
- 
-     },[]);
+
+        axios({
+
+            method: 'post',
+            url: 'http://localhost:5000/api/pageVerify',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': jwt
+            },
+
+        }).then(res => {
+            console.log(res.data);
+            setVerified(1);
+            window.location.href = '/dashboard';
+            // store the returned token into local storage
+
+
+
+
+        }).catch(err => setVerified(2))
+
+
+
+
+
+    }, []);
 
 
     const login = () => {
@@ -88,14 +88,14 @@ function LoginPage() {
 
     const goRegister = async event => {
         event.preventDefault();
-        window.location.href = '/Register';
+        navigate("../register", { replace: true });
     }
 
     const goDashboard = () => {
         window.location.href = '/Dashboard';
     }
 
-    if(verified === 0 || verified === 1) {
+    if (verified === 0 || verified === 1) {
         return (
             <div></div>
         )
@@ -103,85 +103,61 @@ function LoginPage() {
 
     return (
 
-        <div style={{ margin: "auto", padding: 10, marginTop: "3%" }} className="auth-container">
+        <div style={{ margin: "auto", padding: 10, marginTop: "3%" }} >
 
 
             <div className="container my-container mt-5 justify-content-end ">
-                <div className="row justify-content-end  ">
-                  
+                <div className="row justify-content-end" style={{height:"100%"}}>
+
 
                     <div className="col  w3-animate-opacity" style={{ width: "68.35vh", }}>
-                            <img width="100%" height="100%" style={{ objectFit: "cover", marginLeft: "-2.6%", opacity: 1, borderRadius:10 }} src={backgroundTwo} />
-                               
-                           
+                        <img width="100%" height="100%" alt="" style={{ objectFit: "cover", marginLeft: "-3.6%", opacity: 1, borderRadius: 5 }} src={backgroundTwo} />
+
+
+
+                    </div>
+                    <div className="col col-auto  w3-animate-left" style={{ width: "55.55vh", }}>
+                        <h4 className="text-center" style={{ fontFamily: "Courgette", fontSize: 19, marginTop: 7.5 }}>Login to Get Started!</h4>
+
+
+                        <div style={{ width: "100%", height: 100, marginTop: 10 }} >
+
+                            <Checkmark size='60px' color="#797B84" />
 
                         </div>
-                    <div className="col col-auto  w3-animate-left" style={{ width: "55.55vh" }}>
-
-                        <div className="row my-row justify-content-center align-items-center" style={{ height: "10.19vh" }} >
-                            <div className="col-md-6 col-sm-6 my-col">
-                                <h4 className="text-center" style={{ fontFamily:"Courgette", fontSize: 25 }}>Login to Get Started!</h4>
-                            </div>
-                        </div>
-                        <div className="row my-row  align-items-center justify-content-center" style={{ height: "14.8vh" }}>
-                            <div className="" style={{ width: 110, height: 110, padding: 0 }} >
-                                
-<Checkmark size='108px' color="#797B84" />
-
-                            </div>
-
-                        </div>
-                        <div className="row my-row justify-content-center align-items-center " >
-                            <div className="col-md-8 col-sm-6 my-col">
-                                <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Email " onChange={(c) => setUsername(c.target.value)} />
-                                   
 
 
-                                </div>
-                            </div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent:"space-between", flexDirection: "column", marginTop: 15, height:100 }} >
 
-                        </div>
-                        <div className="row my-row justify-content-center align-items-center ">
-                            <div className="col-md-8 col-sm-6 my-col">
-                                <div className="form-group">
+                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Email" variant="outlined" onChange={(c) => setUsername(c.target.value)} margin="normal" size="small" />
 
-                                    <input type="password" className="form-control" placeholder="Password" onChange={(c) => setPassword(c.target.value)} />
+                            <input style={{ width:"70%"}}   className="form-control" type="password" placeholder="Password" variant="outlined" onChange={(c) => setPassword(c.target.value)} size="small" />
 
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="row my-row justify-content-center align-items-center ">
-                            <div className="col-5 col my-col col-auto">
-                                <Button variant="contained" size="large" onClick={login} style={{ width: "100%" }} block>Login</Button>
-
-                                <span id="loginResult"><p>{message}</p></span>
-                            </div>
-
-
-                        </div>
-                        <div className="row my-row justify-content-center align-items-end " style={{ height: "6.5vh" }} >
-                            <div className="col-md-6 col-sm-6 my-col">
-                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goRegister}><a>New User? Register Here</a></h6>
-                            </div>
 
 
 
                         </div>
-                        <div className="row my-row justify-content-center align-items-start " >
-                            <div className="col-md-6 col-sm-6 my-col">
-                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }}><a>Need Help? Click Here</a></h6>
-                            </div>
 
+
+                        <div style={{ display: "flex", alignItems: "center", flexDirection: "column", marginTop: 15 }}>
+                            <Button variant="contained" size="large" onClick={login} block>Login</Button>
+
+                            <span id="loginResult"><p>{message}</p></span>
+
+                            <h6 style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goRegister}>New User? Register Here</h6>
                         </div>
 
-                        <div className="row my-row justify-content-center align-items-start " >
-                            <div className="col-md-6 col-sm-6 my-col">
-                                <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }}><a>Resend Verification</a></h6>
-                            </div>
 
-                        </div>
+
+
+
+
+
+
+
+
+
+
                     </div>
 
                 </div>

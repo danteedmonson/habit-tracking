@@ -7,6 +7,7 @@ import StatBox from '../components/StatBox';
 import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
 import AppDrawer from '../components/AppDrawer';
+import { useNavigate } from "react-router";
 
 const useStyles = makeStyles({
     paper: {
@@ -25,7 +26,7 @@ function HabitsPage() {
     const [verified, setVerified] = useState(0);
     const [drawerState, setDrawerState] = useState(false);
     const [progReload, setProgReload] = useState(false);
-
+    const navigate = useNavigate();
     const progRerender = () => {
         if (progReload === false){
             setProgReload(true);
@@ -41,7 +42,7 @@ function HabitsPage() {
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
 
-        try {
+     
             axios({
 
                 method: 'post',
@@ -59,20 +60,15 @@ function HabitsPage() {
 
 
 
-            }).catch(err => window.location.href = '/')
-        } catch (err) {
-            window.location.href = '/';
-        }
+            }).catch(err =>navigate("../", { replace: true }))
+       
 
 
 
 
     }, []);
 
-    const goLogin = () => {
-        window.location.href = '/';
-    }
-
+    
     if (verified === 0) {
         return (
             <div></div>

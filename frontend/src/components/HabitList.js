@@ -77,12 +77,12 @@ function HabitList(props) {
 
                 >
                     <div className="container ">
-                        <div className="row justify-content-start mx-auto" style={{ height: "80%" }} >
+                        <div className="row justify-content-start mx-auto" style={{ height: "auto", }} >
 
                             {
                                 page1.map((habit, index) => {
                                     return (
-                                        <div className="col-3 col-auto " key={index}>
+                                        <div className="col-3 col-auto "  key={index}>
 
                                             <Habit
                                                 Active={habit.Active}
@@ -199,7 +199,7 @@ function HabitList(props) {
     else if (props.hPage)
     return(
         <div className="container ">
-                        <div className="row justify-content-start mx-auto" style={{ height: "100%", }} >
+                        <div className="row justify-content-start mx-auto" style={{ height: "80%", }} >
 
                             {
                                 habits.map((habit, index) => {
