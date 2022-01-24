@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import 'react-circular-progressbar/dist/styles.css';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
@@ -8,14 +8,14 @@ import UndoButton from '../images/undoButton.png'
 import {iconArr, Icons} from './Icons';
 import axios from 'axios';
 import EditModal from './EditModal';
-
+import {DevContext} from '../App'
 import { ReactComponent as Edit } from '../images/edit.svg'
 import { ReactComponent as Undo } from '../images/undo.svg'
 
 //import EditModal from "./EditModal"
 
 function Habit(props) {
-
+    const url = useContext(DevContext)
     const [percent, setPercent] = useState(props.Progress.Percent);
     const [timesPer, setTimesPer] = useState(props.TimesPer);
     const [hover, setHover] = useState(false);
@@ -56,7 +56,7 @@ function Habit(props) {
                 axios({
 
                     method: 'post',
-                    url: 'http://habeuro.com/api/updatePercent',
+                    url: `${url}/updatePercent`,
                     data: dataInfo,
                     headers: {
                         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ function Habit(props) {
                 axios({
 
                     method: 'post',
-                    url: 'http://habeuro.com/api/undoPercent',
+                    url: `${url}/undoPercent`,
                     data: dataInfo,
                     headers: {
                         'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ function Habit(props) {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/getStreak',
+                url: `${url}/getStreak`,
                 data: dataInfo,
                 headers: {
                     'Content-Type': 'application/json',
@@ -186,6 +186,7 @@ function Habit(props) {
                             color: "white", fontFamily:"Roboto", 
                             fontWeight:"bold", fontSize: "13px", 
                             opacity: hover && !props.Active ? 1 : 0,
+                            padding:1
                              
                             }}>
                                 NOT ACTIVE

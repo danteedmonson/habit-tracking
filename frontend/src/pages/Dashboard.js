@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import HabitBox from '../components/HabitBox';
 import ProgressBox from '../components/ProgressBox';
 import MotiBox from '../components/MotiBox';
@@ -7,15 +7,17 @@ import StatBox from '../components/StatBox';
 import axios from 'axios';
 import AppDrawer from '../components/AppDrawer';
 import { useNavigate } from "react-router";
+import {DevContext} from '../App'
 
 
 
 function Dashboard() {
 
- 
+    const url = useContext(DevContext)
 
     const [verified, setVerified] = useState(0);
     const [progReload, setProgReload] = useState(false);
+    const [completeDay, setCompleteDay] = useState([])
     const navigate = useNavigate();
     const progRerender = () => {
         if (progReload === false){
@@ -36,7 +38,7 @@ function Dashboard() {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/pageVerify',
+                url: `${url}/pageVerify`,
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': jwt
@@ -48,10 +50,6 @@ function Dashboard() {
                 // store the returned token into local storage
             }).catch(err => navigate("../", { replace: true }))
        
-
-
-
-
     }, []);
 
 
@@ -73,7 +71,7 @@ function Dashboard() {
 
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-12 my-col">
-                        <ProgressBox rerend={progReload}/>
+                        <ProgressBox rerend={progReload} setCompleteDay={setCompleteDay}/>
                     </div>
                 </div>
                 <div className="row mx-auto justify-content-between align-items-center">
@@ -87,13 +85,13 @@ function Dashboard() {
                 </div>
                 <div className="row justify-content-center align-items-center">
                     <div className="col-lg-6 col-sm-12 my-col">
-                        <StatBox GraphType="bar"/>
+                        <StatBox GraphType="bar" Checkins={completeDay} dash={true}/>
                     </div>
 
 
 
                     <div className="col-lg-6 col-sm-12 my-col">
-                        <CalBox />
+                        <CalBox Checkins={completeDay} dash={true}/>
                     </div>
                 </div>
 

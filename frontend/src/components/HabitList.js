@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import axios from 'axios';
 import Habit from './Habit';
-
+import {DevContext} from '../App'
 function HabitList(props) {
-
+    const url = useContext(DevContext)
     const [habits, setHabits] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [page1, setPage1] = useState([]);
@@ -20,7 +20,7 @@ function HabitList(props) {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/getHabits',
+                url: `${url}/getHabits`,
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': jwt
@@ -229,9 +229,13 @@ function HabitList(props) {
                     </div>
 
     )
+    else if (loaded && habits.length == 0) {
+        return (<div style={{ color: "white", position:"absolute", bottom:"70%", left:"50%",transform: "translateX(-50%)", opacity:0.5 }}>Create A Habit to Get Started!</div>)
 
-    else
-        return (<div style={{ color: "black" }}>loading</div>)
+    }
+
+    else 
+        return (<div style={{ color: "white", position:"absolute", bottom:"70%", left:"50%",transform: "translateX(-50%)", opacity:0.5 }}>loading...</div>)
 }
 
 export default HabitList;

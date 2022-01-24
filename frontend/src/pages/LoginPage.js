@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 //import Button from 'react-bootstrap/esm/Button';
@@ -9,6 +9,7 @@ import video from '../media/into-the-valley.mp4';
 import backgroundTwo from '../images/wallpaperflare.com_wallpaper2.png';
 import TextField from '@material-ui/core/TextField';
 import { useNavigate } from "react-router";
+import {DevContext} from '../App'
 
 
 
@@ -17,6 +18,7 @@ import { useNavigate } from "react-router";
 
 function LoginPage() {
 
+    const url = useContext(DevContext)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -30,7 +32,7 @@ function LoginPage() {
         axios({
 
             method: 'post',
-            url: 'http://localhost:5000/api/pageVerify',
+            url: `${url}/pageVerify`,
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
@@ -64,7 +66,7 @@ function LoginPage() {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/user/login',
+                url: `${url}/user/login`,
                 data: loginInfo,
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +80,7 @@ function LoginPage() {
                 localStorage.setItem('jwt', jwt);
                 goDashboard();
 
-            }).catch(err => setMessage(err.response.data))
+            }).catch(err => console.log(err))
         } catch (err) {
             setMessage(err.response.data)
         }

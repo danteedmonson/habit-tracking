@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import HabitBox from '../components/HabitBox';
 import ProgressBox from '../components/ProgressBox';
 import MotiBox from '../components/MotiBox';
@@ -8,6 +8,8 @@ import axios from 'axios';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
 import AppDrawer from '../components/AppDrawer';
 import { useNavigate } from "react-router";
+import {DevContext} from '../App'
+
 
 const useStyles = makeStyles({
     paper: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 function HabitsPage() {
-
+    const url = useContext(DevContext)
     const styles = useStyles();
 
     const [verified, setVerified] = useState(0);
@@ -46,7 +48,7 @@ function HabitsPage() {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/pageVerify',
+                url: `${url}/pageVerify`,
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': jwt

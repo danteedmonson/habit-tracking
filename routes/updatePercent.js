@@ -97,8 +97,15 @@ router.post("/undoPercent", verify, async (req, res) => {
     if (newPercent == 100 && Active) {
       undoCheckin(CheckIns);
       newPercent = Percent - 100 / TimesPer;
-      newCount--;
+      if (UpdateCount >= TimesPer) {
+        newCount = TimesPer - 1
+      }
+      else {
+        newCount--
+      }
     }
+
+    
 
     try {
       await User.updateOne(

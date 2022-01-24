@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import axios from "axios";
-
+import {DevContext} from '../App'
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
     height: "4.5vh",
@@ -27,6 +27,7 @@ const useStyles = makeStyles({
 });
 
 function ProgressBox(props) {
+  const url = useContext(DevContext)
   const [percent, setPercent] = useState(0);
 
   const classes = useStyles();
@@ -39,7 +40,7 @@ function ProgressBox(props) {
         axios({
 
             method: 'post',
-            url: 'http://habeuro.com/api/getProgress',
+            url: `${url}/getProgress`,
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
@@ -49,7 +50,9 @@ function ProgressBox(props) {
             
             
             console.log(res.data);
-            setPercent(res.data * 100)
+            setPercent(res.data.percent * 100)
+            props.setCompleteDay(res.data.completeDay)
+            console.log(res.data.completeDay)
             
 
 

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Button';
 import { iconArr, Icons } from './Icons';
 import axios from 'axios';
-
+import {DevContext} from '../App'
 
 
 //import axios from 'axios';
@@ -12,7 +12,7 @@ import axios from 'axios';
 
 
 function EditModal(props) {
-
+  const url = useContext(DevContext)
   const [color, setColor] = useState(props.Color);
 
   const [desc, setDesc] = useState(props.Description);
@@ -65,7 +65,7 @@ function EditModal(props) {
 
         axios({
             method: 'post',
-            url: 'http://localhost:5000/api/deleteHabit',
+            url: `${url}/deleteHabit`,
             data: habitData,
             headers: {
                 'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ function EditModal(props) {
         axios({
 
             method: 'post',
-            url: 'http://habeuro.com/api/editHabit',
+            url: `${url}/editHabit`,
             data: habitData,
             headers: {
                 'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ function EditModal(props) {
       centered
 
     >
-      <Modal.Header>
+      <Modal.Header style={{height:"40%"}}>
 
         <div className="container">
           <div className="row justify-content-center align-items-center mx-auto" >
@@ -202,7 +202,7 @@ function EditModal(props) {
 
           </div>
           <div className="row justify-content-center align-items-center" style={{ height: 140 }}>
-            <div className="col-6 " align="center" style={{ width: 140, height: 140, paddingTop: 30, height: "100%" }}>
+            <div className="col-6 " align="center" style={{ width: 100, height: 100, paddingTop: 30, height: "100%" }}>
               {iconArr[props.Icon]}
             </div>
 

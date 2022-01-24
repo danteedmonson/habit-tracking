@@ -1,58 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import HabitBox from '../components/HabitBox';
-import ProgressBox from '../components/ProgressBox';
-import MotiBox from '../components/MotiBox';
-import CalBox from '../components/CalBox';
+import React, { useState, useEffect, useContext } from 'react';
 import StatBox from '../components/StatBox';
 import axios from 'axios';
-import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon } from '@material-ui/core';
 import AppDrawer from '../components/AppDrawer';
 import { Carousel } from 'react-responsive-carousel';
-import { iconArr, Icons } from '../components/Icons';
+import { Icons } from '../components/Icons';
+import { useNavigate } from "react-router";
+import {DevContext} from '../App'
 
-const useStyles = makeStyles({
-    paper: {
-        background: 'rgba(66, 66, 66, 0.5)',
-        color: 'white',
-        marginTop: "3.37%",
-        backdropFilter: "blur(10px)",
 
-    }
-});
 
 function StatsPage() {
 
 
-
-    const styles = useStyles();
+    const url = useContext(DevContext)
+ 
 
     const [verified, setVerified] = useState(0);
-    const [drawerState, setDrawerState] = useState(false);
-    const [progReload, setProgReload] = useState(false);
     const [habits, setHabits] = useState([]);
-    const [color, setColor] = useState();
     const [currentSlide, setCurrentSlide] = useState(0)
-
+    const navigate = useNavigate();
 
 
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         axios({
+
             method: 'post',
-            url: 'http://localhost:5000/api/pageVerify',
+            url: `${url}/pageVerify`,
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
-            },
+            }
         }).then(res => {
             console.log(res.data);
             getHabits();
             // store the returned token into local storage
-        }).catch(err => window.location.href = '/')
-
-
-
+        }).catch(err => navigate("../", { replace: true }))
 
     }, []);
 
@@ -60,7 +44,7 @@ function StatsPage() {
         const jwt = localStorage.getItem('jwt');
         axios({
             method: 'post',
-            url: 'http://localhost:5000/api/getHabits',
+            url: `${url}/getHabits`,
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
@@ -79,6 +63,7 @@ function StatsPage() {
             <div></div>
         )
     }
+    else 
     return (
         <div style={{ color: "black", width: "100%" }}>
             <div className="frostedBackground"></div>
@@ -134,13 +119,13 @@ function StatsPage() {
 
                 <div className="row justify-content-center align-items-center">
                     <div className="col-lg-6 col-sm-12 my-col" style={{ height: "120%" }}>
-                        <StatBox GraphType="bar" Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
+                        <StatBox GraphType="bar" dash={false} Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
                     </div>
 
 
 
                     <div className="col-lg-6 col-sm-12 my-col">
-                        <StatBox GraphType="line" Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
+                        <StatBox GraphType="line" dash={false} Color={habits[currentSlide].Color} Checkins={habits[currentSlide].CheckIns} noTitle={true} />
                     </div>
                 </div>
 

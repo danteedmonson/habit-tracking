@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
@@ -6,6 +6,7 @@ import { Checkmark } from 'react-checkmark';
 import video from '../media/TheCall.mp4';
 import backgroundOne from '../images/wallpaperflare.com_wallpaper1.png';
 import { useNavigate } from "react-router";
+import {DevContext} from '../App'
 
 
 
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router";
 
 function RegisterPage() {
 
+    const url = useContext(DevContext)
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -24,7 +26,7 @@ function RegisterPage() {
         const jwt = localStorage.getItem('jwt');
         axios({
             method: 'post',
-            url: 'http://localhost:5000/api/pageVerify',
+            url: `${url}/pageVerify`,
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': jwt
@@ -45,7 +47,7 @@ function RegisterPage() {
         })
             axios({
                 method: 'post',
-                url: 'http://localhost:5000/api/user/register',
+                url: `${url}/user/register`,
                 data: loginInfo,
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +68,7 @@ function RegisterPage() {
         })
             axios({
                 method: 'post',
-                url: 'http://habeuro.com/api/user/login',
+                url: `${url}/user/login`,
                 data: loginInfo,
                 headers: {
                     'Content-Type': 'application/json'

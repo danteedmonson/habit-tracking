@@ -6,7 +6,7 @@ import LineGraph from './LineGraph';
 
 function StatBox(props) {
 
-
+    console.log(props.Checkins)
 
     return (
         <div className="dashBox" id="calBox">
@@ -14,9 +14,9 @@ function StatBox(props) {
         
             <div id="calBoxInner" style={{ height: "48.7vh", width:"100%", }}>
                
-               {props.GraphType == "bar" ? <BarChart Color={props.Color} Checkins={props.Checkins}/> :
+               {props.GraphType == "bar" ? <BarChart Color={props.Color} Checkins={props.Checkins} dash={props.dash}/> :
 
-                <LineGraph Color={props.Color} Checkins={props.Checkins}/>}
+                <LineGraph Color={props.Color} Checkins={props.Checkins} dash={props.dash}/>}
             </div>
         </div>
     )

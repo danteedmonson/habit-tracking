@@ -30,6 +30,10 @@ function AppDrawer() {
         navigate("../stats", { replace: true });
     }
 
+    const goCal = () => {
+        navigate("../calendar", { replace: true });
+    }
+
     const goDash = () => {
         navigate("../dashboard", { replace: true });
     }
@@ -57,41 +61,41 @@ function AppDrawer() {
             <Drawer anchor="left" open={drawerState} onClose={() => setDrawerState(false)} classes={{ paper: styles.paper }}>
                 <List>
 
-                    <ListItem button>
+                    <ListItem button onClick={goDash}>
                         <ListItemIcon>
                             <DashboardIcon style={{ color: "white" }} />
                         </ListItemIcon>
-                        <ListItemText primary="Dashboard" onClick={goDash} />
+                        <ListItemText primary="Dashboard" />
                     </ListItem>
 
 
-                    <ListItem button>
+                    <ListItem button onClick={goHabits}>
                         <ListItemIcon>
                             <DoneAllIcon style={{ color: "white" }} />
                         </ListItemIcon>
-                        <ListItemText primary="Habits" onClick={goHabits} />
+                        <ListItemText primary="Habits"  />
                     </ListItem>
 
-                    <ListItem button>
+                    <ListItem button onClick={goStats}>
                         <ListItemIcon>
                             <BarChartIcon style={{ color: "white" }} />
                         </ListItemIcon>
-                        <ListItemText primary="Statistics" onClick={goStats} />
+                        <ListItemText primary="Statistics"  />
                     </ListItem>
 
-                    <ListItem button>
+                    <ListItem button onClick={goCal}>
                         <ListItemIcon>
                             <CalendarTodayIcon style={{ color: "white" }} />
                         </ListItemIcon>
                         <ListItemText primary="Calendar" />
                     </ListItem>
 
-                    <ListItem button>
+                    {/* <ListItem button>
                         <ListItemIcon>
                             <SettingsIcon style={{ color: "white" }} />
                         </ListItemIcon>
                         <ListItemText primary="Settings" />
-                    </ListItem>
+                    </ListItem> */}
 
                 </List>
             </Drawer>

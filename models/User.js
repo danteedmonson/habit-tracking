@@ -31,6 +31,9 @@ const userSchema = new mongoose.Schema({
 
     habits: {
         type: Array
+    },
+    completeDay: {
+        type: Array
     }
 })
 

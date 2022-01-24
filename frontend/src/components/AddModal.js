@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Modal from 'react-bootstrap/Modal';
 //import Button from 'react-bootstrap/esm/Button';
 //import { Button } from '@material-ui/core';
@@ -8,7 +8,7 @@ import { createTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles';
 import { spacing } from "@material-ui/system";
 import Button from './Button';
-
+import {DevContext} from '../App'
 
 
 //import axios from 'axios';
@@ -16,7 +16,7 @@ import Button from './Button';
 
 
 function AddModal(props) {
-
+    const url = useContext(DevContext)
     const [color, setColor] = useState("");
     const [habitName, setHabitName] = useState('');
     const [desc, setDesc] = useState("");
@@ -112,7 +112,7 @@ function AddModal(props) {
             axios({
 
                 method: 'post',
-                url: 'http://habeuro.com/api/addHabit',
+                url: `${url}/addHabit`,
                 data: habitData,
                 headers: {
                     'Content-Type': 'application/json',
