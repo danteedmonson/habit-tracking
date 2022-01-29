@@ -60,7 +60,7 @@
 <br/>
 <br/>
 <br/>
-<br/>
+
 
 <p align="center" width="100%">
     <img  src="./images/stats.png" alt="stats" width="1000"/>
@@ -68,7 +68,7 @@
 <br/>
 <br/>
 <br/>
-<br/>
+
 
 <p align="center" width="100%">
     <img  src="./images/calendar.png" alt="calendar" width="1000"/>
@@ -76,12 +76,7 @@
 <br/>
 <br/>
 <br/>
-<br/>
 
-
-
-
-<br/>
 
 ## Usage
 
