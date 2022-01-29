@@ -21,7 +21,8 @@
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
----
+<br/>
+
 ## Introduction
 - ### Problem
         Users want to build habits that can keep them productive and help them reach their ultimate goals in life.
@@ -34,20 +35,23 @@
         trackers I tried but they didn't have the features I wanted and some were to expensive.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
----
+<br/>
+
 ## Technologies Used
 - React - version 17.0.2
 - MongoDB - version 5.1.0
 - NodeJS - version 14.16.1
 - Express - version 4.17.1
----
+<br/>
+
 ## Features
 - Habit customizability: choose which week days users want to compelete habits 
 - Progress Tracking: show completion percentage of all habits
 - Graphs: week days and time users complete habits the most
 - Calendar: which dates habits were completed
 
----
+<br/>
+
 ## Screenshots
 
 <p align="center" width="100%">
@@ -77,7 +81,8 @@
 
 
 
----
+<br/>
+
 ## Usage
 
 ```bash
@@ -94,12 +99,14 @@ $ yarn
 $ yarn start 
 ```
 
----
+<br/>
+
 ## Project Status
 Project is:   _complete_  
 
 
----
+<br/>
+
 ## Contact
 Created by [@danteedmonson](https://danteedmonson.com)
 
