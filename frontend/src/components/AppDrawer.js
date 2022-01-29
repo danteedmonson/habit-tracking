@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import { AppBar, Toolbar, IconButton, Typography, makeStyles, Button, Drawer, List, ListItem, ListItemIcon, Menu, MenuItem } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, makeStyles, Drawer, List, ListItem, ListItemIcon, Menu, MenuItem } from '@material-ui/core';
 import { Menu as MenuIcon, AccountCircle } from '@material-ui/icons';
 
 
 import ListItemText from '@material-ui/core/ListItemText';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import SettingsIcon from '@material-ui/icons/Settings';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import { useNavigate } from "react-router";
@@ -90,12 +89,6 @@ function AppDrawer() {
                         <ListItemText primary="Calendar" />
                     </ListItem>
 
-                    {/* <ListItem button>
-                        <ListItemIcon>
-                            <SettingsIcon style={{ color: "white" }} />
-                        </ListItemIcon>
-                        <ListItemText primary="Settings" />
-                    </ListItem> */}
 
                 </List>
             </Drawer>

@@ -6,7 +6,6 @@ import {iconArr} from './Icons';
 import axios from 'axios';
 import { createTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/styles';
-import { spacing } from "@material-ui/system";
 import Button from './Button';
 import {DevContext} from '../App'
 
@@ -40,14 +39,7 @@ function AddModal(props) {
     const occ = { mon, tues, wed, thurs, fri, sat, sun }
 
 
-    //   const bp = require('./bp.js');
-    //   const storage = require('../tokenStorage.js');
-    //   const jwt = require("jsonwebtoken");
-
-    var card = '';
-    var search = '';
-
-    const [message, setMessage] = useState('');
+  
 
     const theme = createTheme({
         palette: {
@@ -68,11 +60,12 @@ function AddModal(props) {
 
     useEffect(() => {
 
-        console.log(color)
+        // Make sure all fields are filled out before enabling next button
         if (color !== "" && habitName !== "" && desc !== "" && amount !== "" &&
             (mon !== false || tues !== false || wed !== false || thurs !== false || fri !== false || sat !== false || sun !== false)) {
             setEnableNext(false)
 
+            // if an icon is chosen allow user to save
             if (icon !== -1) {
                 setEnableSave(false)
             }
@@ -80,16 +73,13 @@ function AddModal(props) {
         }
         else {
             setEnableNext(true)
-
         }
-
-
     })
 
     const addHabit =  () => {
-
+        // get jwt from local storage
         const jwt = localStorage.getItem('jwt');
-
+        // create habit json
         const habitData = JSON.stringify({
             "HabitName": habitName,
             "Description": desc,
@@ -107,10 +97,8 @@ function AddModal(props) {
             "TimesPer": amount
          }
          )
-
-        try {
+            // make a call to addHabit api with the habit json in the body when the user clicks save
             axios({
-
                 method: 'post',
                 url: `${url}/addHabit`,
                 data: habitData,
@@ -118,30 +106,21 @@ function AddModal(props) {
                     'Content-Type': 'application/json',
                     'auth-token': jwt
                 },
-
             }).then(res => {
                 console.log(res.data);
-                console.log("ADD MODDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-
+                // function to trigger the habit lst to rerender
                 props.rerender();
+                //function to trigger the progress bar to rerender
                 props.progRerender();
 
                 setTimeout(() => {
                     closeModal();
                   }, 300);
-              
-             
+            }).catch(err => console.log(err))
 
-
-
-
-            }).catch(err => console.log("hello"))
-        } catch (err) {
-
-        }
     }
 
-
+// reset all values for future habit creation
     const closeModal = async event => {
         setColor("");
         setHabitName("");
@@ -172,15 +151,14 @@ function AddModal(props) {
 
 
 
-    useEffect(() => console.log(occ), [occ])
+    
 
 
 
     return (
         <>
-        {/* <div className="frostedBackground"></div> */}
+        
         <Modal
-
             scrollable
             backdrop='static'
             {...props}
@@ -194,22 +172,14 @@ function AddModal(props) {
                 style=
                 {
                     {
-                        
                         overflow: "hidden",
-                      
-                        
                         backdropFilter: "blur(10px)",
-                         
-                      
-
                     }
                 }>
                 <Modal.Title id="example-custom-modal-styling-title" >
                     <h6 style={{ fontFamily:"Courgette", color:"#EDBBB4", fontSize: 25 }}>Create Habit</h6>
                 </Modal.Title >
             </Modal.Header>
-
-
             {
                 showIcons ?
                     <Modal.Body 

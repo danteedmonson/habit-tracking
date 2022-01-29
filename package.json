@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "git@github.com:danteedmonson/habit-tracking.git",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Dante Edmonson <dedmonson@Knights.ucf.edu>",
   "license": "MIT",

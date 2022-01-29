@@ -1,6 +1,10 @@
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 
+/*
+    The verify middleware function verifies a
+    users jwt
+*/
 
 function verify (req, res, next) {
     const token = req.header('auth-token');

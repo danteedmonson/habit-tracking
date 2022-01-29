@@ -11,11 +11,9 @@ const addHabit = require('./routes/addHabit');
 const getHabits = require('./routes/getHabits');
 const deleteHabit = require('./routes/deleteHabit');
 const updatePercent = require('./routes/updatePercent');
-const verifyToken = require('./routes/verifyToken');
 const pageVerify = require('./routes/pageVerify');
 const editHabit = require("./routes/editHabit");
 const getProgress = require("./routes/getProgress")
-//const resetHabits = require('./routes/reset');
 
 
 // read the .env file for the enviromental variables
@@ -40,9 +38,6 @@ app.use('/api/', updatePercent);
 app.use('/api/', pageVerify);
 app.use('/api',editHabit);
 app.use('/api',getProgress);
-//app.use('/api/', resetHabits);
-
-
 
 
 app.listen(8000, () => console.log("Listening to port 8000..."));

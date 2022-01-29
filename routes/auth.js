@@ -2,10 +2,6 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const dotenv = require("dotenv")
-
-// // read the .env file for the enviromental variables
-// dotenv.config();
 
 // import the validation functions
 const { registerValid, loginValid } = require("../validation");

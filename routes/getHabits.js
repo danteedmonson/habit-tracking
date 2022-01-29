@@ -9,6 +9,7 @@ router.post("/getHabits", verify, resetHabits, async (req, res) => {
 
 
     try {
+      // find the user and return all their habits
       const user = await User.findOne({ _id: req.user });
       res.json(user.habits);
      

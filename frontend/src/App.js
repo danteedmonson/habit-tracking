@@ -10,11 +10,11 @@ import CalendarPage from "./pages/CalendarPage";
 import { BrowserRouter as Router, Switch, Route, Link, Routes} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const DevContext = createContext("http://habeuro.com/api")
+export const DevContext = createContext("https://habeuro.com/api")
 
 function App() {
   return (
-    <DevContext.Provider value="http://habeuro.com/api">
+    <DevContext.Provider value="https://habeuro.com/api">
     <div className="App">
       <div className="App-container">
         <Router>

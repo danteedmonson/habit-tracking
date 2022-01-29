@@ -11,7 +11,7 @@ This API deletes a Habit from the User's habits array
 based on the habit
  */
 router.post("/editHabit", verify, async (req, res) => {
-  // deleteValid validates the request body and returns an error if there is one
+  // editValid validates the request body and returns an error if there is one
   const error = editValid(req.body);
 
   if (error == undefined) {
@@ -33,9 +33,9 @@ router.post("/editHabit", verify, async (req, res) => {
 
   const date = new Date();
 
-
-
     try {
+      
+      // find the user
       let user = await User.findOne({ _id: req.user });
 
       let index = -1;
@@ -50,8 +50,10 @@ router.post("/editHabit", verify, async (req, res) => {
       const newActive = req.body.Occurrence[weekday[date.getDay()]];
       console.log(newActive)
 
+      // Calculate a new completion percentage if the user edits the occurrence 
       let newPercent = Progress.UpdateCount < newTimesPer ? ((100 / newTimesPer) * Progress.UpdateCount) : 100;
 
+      // update Checkins accordingly 
       if (newPercent < 100 && Progress.Percent == 100) {
         // pop Checkin
         undoCheckin(CheckIns)
@@ -62,11 +64,7 @@ router.post("/editHabit", verify, async (req, res) => {
         addCheckin(CheckIns)
       }
 
-
-
-
-
-      // Delete the habit from the database based on the habit ID
+      // Update the habit from the database based on the habit ID
       await User.updateOne(
         {
           _id: req.user,
@@ -81,10 +79,7 @@ router.post("/editHabit", verify, async (req, res) => {
             "habits.$.Color": newColor,
             "habits.$.CheckIns": CheckIns,
             "habits.$.TimesPer": newTimesPer,
-            "habits.$.Occurrence": newOccur,
-
-            
-            
+            "habits.$.Occurrence": newOccur,   
           },
         }
       );

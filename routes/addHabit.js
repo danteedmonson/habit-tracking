@@ -17,7 +17,7 @@ router.post("/addHabit", verify, async (req, res) => {
     // generate a unique object ID for the new habit
     var habitID = mongoose.Types.ObjectId();
 
-    // update the Active property based on the edited habbit occurrence
+    // update the Active property based on the edited habit occurrence
     const weekday = {
       0: "Sun",
       1: "Mon",
