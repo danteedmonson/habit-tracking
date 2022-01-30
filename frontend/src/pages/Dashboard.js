@@ -19,17 +19,7 @@ function Dashboard() {
     const [progReload, setProgReload] = useState(false);
     const [completeDay, setCompleteDay] = useState([])
     const navigate = useNavigate();
-    const progRerender = () => {
-        if (progReload === false){
-            setProgReload(true);
-            console.log("DASHBOARD REREND STATE CHANGE");
-        }
-        else{
-            setProgReload(false);
-            console.log("DASHBOARD REREND STATE CHANGE");
-        }
-    };
-
+    
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
@@ -76,7 +66,7 @@ function Dashboard() {
                 </div>
                 <div className="row mx-auto justify-content-between align-items-center">
                     <div className="col-lg-9 col-md-12 col-sm-12  my-col">
-                        <HabitBox progRerender={progRerender}/>
+                        <HabitBox  setProgReload={setProgReload}/>
                     </div>
 
                     <div className="col-3 d-md-none d-sm-none d-lg-block my-col">

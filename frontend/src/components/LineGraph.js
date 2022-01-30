@@ -31,9 +31,8 @@ function LineGraph(props) {
         for (var i = 1; i < props.Checkins.length; i++) {
             if (props.Checkins[i].Streak !== 0) {
 
-
+               // console.log(props.Checkins[i])
                 var date = new Date(props.Checkins[i].CurrDate)
-
 
                 console.log(date.getHours())
 
@@ -60,8 +59,6 @@ function LineGraph(props) {
                     case 6:
                         am6 = am6 + 1
                         break;
-
-
                     case 7:
                         am7 = am7 + 1
                         break;
@@ -80,8 +77,6 @@ function LineGraph(props) {
                     case 12:
                         pm12 = pm12 + 1
                         break;
-
-
                     case 13:
                         pm1 = pm1 + 1
                         break;
@@ -147,7 +142,7 @@ function LineGraph(props) {
                             datasets: [
                                 {
 
-                                    data: [am12, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11],
+                                    data: [am12, am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11],
                                     backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
                                     borderColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
                                     line: {

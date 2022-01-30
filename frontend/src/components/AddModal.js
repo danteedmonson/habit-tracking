@@ -109,9 +109,10 @@ function AddModal(props) {
             }).then(res => {
                 console.log(res.data);
                 // function to trigger the habit lst to rerender
-                props.rerender();
+                props.setRerend((prev)=>!prev);
+                
                 //function to trigger the progress bar to rerender
-                props.progRerender();
+                props.setProgReload((prev)=>!prev)
 
                 setTimeout(() => {
                     closeModal();

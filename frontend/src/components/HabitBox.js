@@ -9,20 +9,6 @@ function HabitBox(props) {
     //state for rerendering the habitlist
     const [rerend, setRerend] = useState(false);
 
-    // rerender the habit list to show update
-    const rerender = () => {
-        if (rerend === false) {
-            setRerend(true);
-            console.log("HABIT BOX REREND STATE CHANGE");
-        }
-        else {
-            setRerend(false);
-            console.log("HABIT BOX REREND STATE CHANGE");
-        }
-    };
-
-
-
     return (
         <>
 
@@ -53,15 +39,15 @@ function HabitBox(props) {
 
                 <div style={{ position: "absolute", width: "100%", height: "70%", borderRadius: 0, bottom: "0 !important", marginBottom: "0px !important", bottom: 15 }}>
                     <div style={{ position: "relative", height: "100%", width: "100%" }}>
-                        <HabitList rerend={rerend} rerender={rerender} progRerender={props.progRerender} hPage={props.hPage} />
+                        <HabitList rerend={rerend}  setRerend={setRerend} setProgReload={props.setProgReload} hPage={props.hPage} />
                     </div>
                 </div>
             </div>
             <AddModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                rerender={rerender}
-                progRerender={props.progRerender}
+                setRerend={setRerend}
+                setProgReload={props.setProgReload}
             />
         </>
     );

@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 function AppDrawer() {
     const styles = useStyles();
-    const [drawerState, setDrawerState] = useState(false);
+    const [drawerState, setDrawerState] = useState(false); 
     const navigate = useNavigate();
     const goStats = () => {
         navigate("../stats", { replace: true });

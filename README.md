@@ -25,14 +25,11 @@
 
 ## Introduction
 - ### Problem
-        Users want to build habits that can keep them productive and help them reach their ultimate goals in life.
-        It's hard to actually build these habits without keeping track of them.
+    ```Users want to build habits that can keep them productive and help them reach their ultimate goals in life. It's hard to actually build these habits without keeping track of them.```
 - ### Purpose
-        The purpose of Habeuro is to give users the ability to track their habit building proccess by keeping track
-        of their streaks, showing their progress, and giving them infomative data.
+    ``` The purpose of Habeuro is to give users the ability to track their habit building proccess by keeping track of their streaks, showing their progress, and giving them infomative data.```
 - ### Why 
-        I chose to create Habeuro because I was always interested in becoming more productive. There are a few habit 
-        trackers I tried but they didn't have the features I wanted and some were to expensive.
+    ```I chose to create Habeuro because I was always interested in becoming more productive. There are a few habit trackers I tried but they didn't have the features I wanted and some were to expensive.```
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 <br/>

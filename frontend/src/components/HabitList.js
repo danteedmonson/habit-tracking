@@ -95,9 +95,9 @@ function HabitList(props) {
                                                 Progress={habit.Progress}
                                                 TimesPer={habit.TimesPer}
                                                 _id={habit._id}
-                                                rerender={props.rerender}
                                                 rerend={props.rerend}
-                                                progRerender={props.progRerender}
+                                                setRerend={props.setRerend}
+                                                setProgReload={props.setProgReload}
                                             />
 
                                         </div>
@@ -147,9 +147,9 @@ function HabitList(props) {
                                                 Progress={habit.Progress}
                                                 TimesPer={habit.TimesPer}
                                                 _id={habit._id}
-                                                rerender={props.rerender}
+                                                setRerend={props.setRerend}
                                                 rerend={props.rerend}
-                                                progRerender={props.progRerender} />
+                                                setProgReload={props.setProgReload} />
 
                                         </div>
                                     )
@@ -179,9 +179,9 @@ function HabitList(props) {
                                                 Progress={habit.Progress}
                                                 TimesPer={habit.TimesPer}
                                                 _id={habit._id}
-                                                rerender={props.rerender}
+                                                setRerend={props.setRerend}
                                                 rerend={props.rerend}
-                                                progRerender={props.progRerender} />
+                                                setProgReload={props.setProgReload} />
 
                                         </div>
                                     )
@@ -217,9 +217,9 @@ function HabitList(props) {
                                                 Progress={habit.Progress}
                                                 TimesPer={habit.TimesPer}
                                                 _id={habit._id}
-                                                rerender={props.rerender}
+                                                setRerend={props.setRerend}
                                                 rerend={props.rerend}
-                                                progRerender={props.progRerender} />
+                                                setProgReload={props.setProgReload} />
 
                                         </div>
                                     )

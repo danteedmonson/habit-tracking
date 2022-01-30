@@ -7,17 +7,16 @@ import {
 } from "react-circular-progressbar";
 import { Checkmark } from "react-checkmark";
 
-import { iconArr, Icons } from "./Icons";
+import {  Icons } from "./Icons";
 import axios from "axios";
 import EditModal from "./EditModal";
 import { DevContext } from "../App";
 import { ReactComponent as Edit } from "../images/edit.svg";
 import { ReactComponent as Undo } from "../images/undo.svg";
 
-//import EditModal from "./EditModal"
-
 function Habit(props) {
   const url = useContext(DevContext);
+  // habit properties
   const [percent, setPercent] = useState(props.Progress.Percent);
   const [timesPer, setTimesPer] = useState(props.TimesPer);
   const [hover, setHover] = useState(false);
@@ -31,7 +30,7 @@ function Habit(props) {
   }, [props.rerend]);
 
   useEffect(() => {
-    props.rerender();
+    props.setRerend((prev)=>!prev)
   }, [props.Progress.Percent]);
 
   const increasePercent = () => {
@@ -55,8 +54,7 @@ function Habit(props) {
           },
         })
           .then((res) => {
-            // console.log(res);
-            props.progRerender();
+            props.setProgReload(prev=>!prev)
           })
           .catch((err) => console.log(err));
       } catch (err) {
@@ -85,7 +83,7 @@ function Habit(props) {
         })
           .then((res) => {
             // console.log(res);
-            props.progRerender();
+            props.setProgReload(prev=>!prev)
           })
           .catch((err) => console.log("error"));
       } catch (err) {
@@ -111,8 +109,6 @@ function Habit(props) {
         .then((res) => {
           setStreak(res.data.Streak);
           setLStreak(res.data.LongestStreak);
-          // console.log(res.data.Streak);
-          // console.log(streak)
           setModalShow(true);
         })
         .catch((err) => console.log("error"));
@@ -248,8 +244,8 @@ function Habit(props) {
         CheckIns={props.CheckIns}
         Streak={streak}
         LongestStreak={lstreak}
-        rerender={props.rerender}
-        progRerender={props.progRerender}
+        setRerend={props.setRerend}
+        setProgReload={props.setProgReload}
       />
     </div>
   );

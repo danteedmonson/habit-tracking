@@ -73,8 +73,9 @@ function EditModal(props) {
             },
         }).then(res => {
             console.log(res.data);
-            props.rerender()
-            props.progRerender()
+           
+           props.setRerend((prev)=>!prev)
+           props.setProgReload(prev=>!prev)
             closeModal();
             setTimeout(() => { 
                 setEditMode(false);
@@ -121,8 +122,9 @@ function EditModal(props) {
         }).then(res => {
            
 
-            props.rerender()
-            props.progRerender()
+            
+            props.setRerend((prev)=>!prev)
+            props.setProgReload(prev=>!prev)
 
             closeModal();
             setTimeout(() => {
