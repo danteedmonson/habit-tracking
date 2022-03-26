@@ -20,6 +20,7 @@
     "react-checkmark": "^1.4.0",
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^17.0.2",
+    "react-responsive": "^9.0.0-beta.6",
     "react-responsive-carousel": "^3.2.20",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",

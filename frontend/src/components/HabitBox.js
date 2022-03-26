@@ -9,48 +9,95 @@ function HabitBox(props) {
     //state for rerendering the habitlist
     const [rerend, setRerend] = useState(false);
 
-    return (
-        <>
+    if (!props?.isMobile)
+        return (
+            <>
 
-            <div className="dashBox" id={props.hPage ? "habitPageBox" : "habitBox"}>
-                <div style={{ position: "absolute", left: 20, top: 12, fontFamily: "Courgette", color: "#EDBBB4" }}>Habits</div>
-                <Button
-                    variant="secondary"
-                    onClick={() => setModalShow(true)}
-                    style={{
-                        color: "white",
-                        backgroundColor: "transparent",
-                        width: "40px",
-                        position: "absolute",
-                        top: "-7px",
-                        right: 20,
-                        height: "50px",
-                        border: "3px solid white",
-                        fontSize: 20,
-                        fontWeight: "bold",
-                        borderBottomRightRadius: 5,
-                        borderBottomLeftRadius: 5,
-                        opacity: 0.7
-                    }}
-                >
-                    +
-                </Button>
+                <div className="dashBox" id={props.hPage ? "habitPageBox" : "habitBox"}>
+                    <div style={{ position: "absolute", left: 20, top: 12, fontFamily: "Courgette", color: "#EDBBB4" }}>Habits</div>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setModalShow(true)}
+                        style={{
+                            color: "white",
+                            backgroundColor: "transparent",
+                            width: "40px",
+                            position: "absolute",
+                            top: "-7px",
+                            right: 20,
+                            height: "50px",
+                            border: "3px solid white",
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            borderBottomRightRadius: 5,
+                            borderBottomLeftRadius: 5,
+                            opacity: 0.7
+                        }}
+                    >
+                        +
+                    </Button>
 
 
-                <div style={{ position: "absolute", width: "100%", height: "70%", borderRadius: 0, bottom: "0 !important", marginBottom: "0px !important", bottom: 15 }}>
-                    <div style={{ position: "relative", height: "100%", width: "100%" }}>
-                        <HabitList rerend={rerend}  setRerend={setRerend} setProgReload={props.setProgReload} hPage={props.hPage} />
+                    <div style={{ position: "absolute", width: "100%", height: "70%", borderRadius: 0, bottom: "0 !important", marginBottom: "0px !important", bottom: 15 }}>
+                        <div style={{ position: "relative", height: "100%", width: "100%" }}>
+                            <HabitList rerend={rerend} setRerend={setRerend} setProgReload={props.setProgReload} hPage={props.hPage} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <AddModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-                setRerend={setRerend}
-                setProgReload={props.setProgReload}
-            />
-        </>
-    );
+                <AddModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    setRerend={setRerend}
+                    setProgReload={props.setProgReload}
+                />
+            </>
+        );
+    else
+        return (
+            <>
+
+               
+                    <div style={{ position: "fixed", left: 20, top: 60, fontFamily: "Courgette", color: "#EDBBB4" }}>Habits</div>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setModalShow(true)}
+                        style={{
+                            color: "white",
+                            backgroundColor: "transparent",
+                            width: "40px",
+                            position: "fixed",
+                            top: "53px",
+                            right: 20,
+                            height: "50px",
+                            border: "3px solid white",
+                            fontSize: 20,
+                            fontWeight: "bold",
+                            borderBottomRightRadius: 5,
+                            borderBottomLeftRadius: 5,
+                            opacity: 0.7
+                        }}
+                    >
+                        +
+                    </Button>
+
+
+                    <div style={{ width: "100vw", height:"auto", borderRadius: 0,  marginTop: "60px", display:"flex", justifyContent:"center"}}>
+                        
+                     
+                            <HabitList rerend={rerend} setRerend={setRerend} setProgReload={props.setProgReload} isMobile={props?.isMobile} hPage={false} />
+                    
+                    </div>
+          
+                <AddModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    setRerend={setRerend}
+                    setProgReload={props.setProgReload}
+                    isMobile={props?.isMobile}
+                />
+            </>
+        );
+
 }
 
 

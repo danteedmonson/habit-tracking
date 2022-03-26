@@ -1,5 +1,5 @@
 .App-container {
-  background-image: url("./images/pastelbackground3.png");
+  /* background-image: url("./images/pastelbackground3.png"); */
   background-size: cover;
 
   min-height: 100vh;
@@ -38,7 +38,7 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   background-color: rgba(0, 0, 0, 0.2); 
 
 
@@ -55,12 +55,13 @@
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 5px;
   color: white;
+  position: relative;
   
   /* border: 1px solid black; */
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
   
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   background-color: rgba(0, 0, 0, 0.2); 
 
 
@@ -103,8 +104,17 @@
   border-radius: 5px !important;
   height: 60vh !important;
   width: 50vw !important;
- 
-  
+}
+
+
+
+@media only screen and (max-width: 825px) {
+  .modal-content {
+    border-radius: 5px !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    
+  }
 }
 
 .modal {
@@ -124,6 +134,7 @@
 #motiBox {
   width: 100%;
   height: 55vh;
+  position:relative;
 }
 
 #calBox {
@@ -283,4 +294,14 @@
 
 .mytools:hover .tooltiptext {
   visibility: visible;
+}
+
+.noSelect {
+  -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+     -khtml-user-select: none;
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+
 }

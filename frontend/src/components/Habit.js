@@ -19,7 +19,7 @@ function Habit(props) {
   // habit properties
   const [percent, setPercent] = useState(props.Progress.Percent);
   const [timesPer, setTimesPer] = useState(props.TimesPer);
-  const [hover, setHover] = useState(false);
+  const [hover, setHover] = useState(!props?.isMobile ? false: true);
   const [modalShow, setModalShow] = useState(false);
   const [streak, setStreak] = useState(0);
   const [lstreak, setLStreak] = useState(0);
@@ -130,7 +130,7 @@ function Habit(props) {
 
       {/* The progress bar takes the full width of the div */}
       <div
-        style={{ width: "14vmin", height: "14vmin", padding: 0 }}
+        style={!props?.isMobile ? { width: "14vmin", height: "14vmin", padding: 0 }: { width: "35vw", maxWidth:"150px", maxHeight:"150px", height: "35vw", padding: 0 }}
         className="row justify-content-center align-items-center my-row2 mx-auto "
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -196,7 +196,7 @@ function Habit(props) {
             style={{
               width: "20px",
               marginTop: 10,
-              opacity: hover && props.Active ? 1 : 0,
+              opacity: hover && props.Active || props?.isMobile ? 1 : 0,
               cursor: props.Active && "pointer",
             }}
           />
@@ -206,8 +206,10 @@ function Habit(props) {
           style={{
             fontFamily: "Roboto, sans-serif",
             fontWeight: "bold",
-            fontSize: "1.8vmin",
+            fontSize: !props?.isMobile ? "1.8vmin" : "14px",
+            overflow:"visible",
             padding: 0,
+            width:"20%",
             color: props.Color,
           }}
         >
@@ -223,7 +225,7 @@ function Habit(props) {
             style={{
               width: "20px",
               marginTop: 10,
-              opacity: hover && props.Active ? 1 : 0,
+              opacity: hover && props.Active || props?.isMobile ? 1 : 0,
               cursor: "pointer",
             }}
           />

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     }
 });
 
-function AppDrawer() {
+function AppDrawer(props) {
     const styles = useStyles();
     const [drawerState, setDrawerState] = useState(false); 
     const navigate = useNavigate();
@@ -68,12 +68,12 @@ function AppDrawer() {
                     </ListItem>
 
 
-                    <ListItem button onClick={goHabits}>
+                    {!props?.isMobile && <ListItem button onClick={goHabits}>
                         <ListItemIcon>
                             <DoneAllIcon style={{ color: "white" }} />
                         </ListItemIcon>
                         <ListItemText primary="Habits"  />
-                    </ListItem>
+                    </ListItem>}
 
                     <ListItem button onClick={goStats}>
                         <ListItemIcon>

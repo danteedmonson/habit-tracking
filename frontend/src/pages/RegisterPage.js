@@ -12,7 +12,7 @@ import {DevContext} from '../App'
 
 
 
-function RegisterPage() {
+function RegisterPage(props) {
 
     const url = useContext(DevContext)
     const [email, setEmail] = useState("");
@@ -92,6 +92,7 @@ function RegisterPage() {
     }
 
 
+    if (!props.isMobile)
     return (
 
         <>
@@ -100,7 +101,7 @@ function RegisterPage() {
 
 
                 <div className="container my-container mt-5 justify-content-end ">
-                    <div className="row justify-content-end ">
+                    <div className="row justify-content-end " style={{height:"100%"}}>
 
                         <div className="col col-auto w3-animate-right" style={{ width: "55.55vh" }}>
 
@@ -140,7 +141,7 @@ function RegisterPage() {
 
                         </div>
                         <div className="col  w3-animate-opacity" style={{ width: "68.35vh", padding:"-11.25px" }}>
-                            <img width="120%" height="100%" style={{ objectFit: "cover", marginLeft: "0%", opacity: 1, borderRadius:10 }} src={backgroundOne} />
+                            <img width="120%" height="100%" alt="" style={{ objectFit: "cover", marginLeft: "0%", opacity: 1, borderRadius:10 }} src={backgroundOne} />
                                
                            
 
@@ -151,6 +152,57 @@ function RegisterPage() {
             </div>
         </>
     );
+    else
+    return (
+       
+
+
+       
+       
+
+                <div className="col col-auto w3-animate-right" style={{ width: "95%" }}>
+
+                <h4 className="text-center" style={{ fontFamily: "Courgette", fontSize: 19, marginTop: 7.5, marginBottom:30 }}>Register to Get Started!</h4>
+
+
+                    <div style={{ display: "flex", alignItems: "center", justifyContent:"space-between", flexDirection: "column", marginTop: 15, height:200, marginBottom:30 }} >
+                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="First Name" variant="outlined" onChange={(c) => setFirstName(c.target.value)} margin="normal" size="small" />
+                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Last Name" variant="outlined" onChange={(c) => setLastName(c.target.value)} margin="normal" size="small" />
+                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Email" variant="outlined"  autoComplete="off" onChange={(c) => setEmail(c.target.value)} margin="normal" size="small" />
+                    <input style={{ width:"70%"}}   className="form-control" type="password" placeholder="Password" variant="outlined" autoComplete="off" onChange={(c) => setPassword(c.target.value)} size="small" />
+                </div>
+                    <div className="row my-row justify-content-center align-items-center ">
+                        <div className="col-5 col my-col col-auto">
+                            <Button variant="contained" size="lg" onClick={register} style={{ width: "100%" }} block>Register</Button>
+
+                            <span id="loginResult"><p>{message}</p></span>
+                        </div>
+
+
+                    </div>
+                    <div className="row my-row justify-content-center align-items-end " style={{ height: "6.5vh" }} >
+                        <div className="col-md-6 col-sm-6 my-col">
+                            <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goLogin}><a>Have an Account? Login Here</a></h6>
+                        </div>
+
+
+
+                    </div>
+                    <div className="row my-row justify-content-center align-items-start " >
+                        <div className="col-md-6 col-sm-6 my-col">
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+       
+
+
+    )
+
 }
 
 

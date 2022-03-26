@@ -10,7 +10,7 @@ import {DevContext} from '../App'
 
 
 
-function CalendarPage() {
+function CalendarPage(props) {
 
 
     const url = useContext(DevContext)
@@ -66,9 +66,9 @@ function CalendarPage() {
     }
     else 
     return (
-        <div style={{ color: "black", width: "100%" }}>
+        <div className="noSelect" style={{ color: "black", width: "100%" }}>
             <div className="frostedBackground"></div>
-            <AppDrawer />
+            <AppDrawer isMobile={props.isMobile}/>
             <br></br>
             <br></br>
             <br></br>

@@ -21,6 +21,11 @@ const useStyles = makeStyles({
     }
 });
 
+if(window.matchMedia("(pointer: coarse)").matches) {
+    // touchscreen
+    console.log("TOUCH")
+}
+
 function HabitsPage() {
     const url = useContext(DevContext)
     const styles = useStyles();
@@ -81,22 +86,13 @@ function HabitsPage() {
 
 
     return (
-        <div style={{ color: "black" }}>
+        <div className="noSelect" style={{ color: "black" }}>
             <AppDrawer/>
             <br></br>
             <br></br>
             <br></br>
             <div className="container">
-                {/* <div className="row">
-                    <div className="col">
-                    <ProgressBox />
-                    </div>
-                </div>
-                <div className="row">
-                    <HabitBox />
-                </div>
-
-            </div> */}
+        
 
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-12 my-col">
@@ -105,7 +101,7 @@ function HabitsPage() {
                 </div>
                 <div className="row mx-auto justify-content-between align-items-center">
                     <div className="col-12 my-col">
-                        <HabitBox progRerender={progRerender} hPage={true}/>
+                        <HabitBox setProgReload={setProgReload} hPage={true}/>
                     </div>
 
                    

@@ -9,7 +9,7 @@ import {DevContext} from '../App'
 
 
 
-function StatsPage() {
+function StatsPage(props) {
 
 
     const url = useContext(DevContext)
@@ -65,16 +65,17 @@ function StatsPage() {
     }
     else 
     return (
-        <div style={{ color: "black", width: "100%" }}>
+        <div className="noSelect" style={{ color: "black", width: "100%" }}>
             <div className="frostedBackground"></div>
-            <AppDrawer />
+            <AppDrawer isMobile={props.isMobile}/>
             <br></br>
             <br></br>
             <br></br>
             <div className="container" style={{ width: "100%" }}>
 
 
-                <div className="row mx-auto justify-content-center align-items-center">
+                {!props.isMobile ? 
+                    <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-4 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
                             <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
@@ -114,6 +115,50 @@ function StatsPage() {
 
                     </div>
                 </div>
+                :
+
+                <div className="row mx-auto justify-content-center align-items-center">
+                    <div className="col-12 my-col">
+                        <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color, marginBottom:5 }}>
+                            <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
+                            <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].Streak}</h2>
+                        </div>
+
+                    </div>
+                    <div className="col-12 my-col">
+                        <div className="dashBox" style={{ height: "18vh",marginBottom:5 }}>
+                            <Carousel
+                                infiniteLoop="true"
+                                showThumbs="false"
+                                showArrows="true"
+                                onChange={index => setCurrentSlide(index)}>
+
+                                {habits.map((habit, index) => {
+                                    return (
+                                        <div key={index} style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <div style={{ height: "12vh", width: "12vh" }}>
+
+                                                <Icons color={habit.Color} icon={habit.Icon} />
+                                                <div style={{ marginTop: "-17%", fontFamily: "Roboto", color: habit.Color }}>{habit.HabitName}</div>
+                                            </div>
+                                        </div>
+                                    )
+
+                                })}
+                            </Carousel>
+                        </div>
+                    </div>
+                    <div className="col-12 my-col">
+                        <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color,marginBottom:5 }}>
+                            <h3 style={{ fontFamily: "Courgette" }}>Longest Streak:</h3>
+                            <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].LongestStreak}</h2>
+
+                        </div>
+
+                    </div>
+                </div>
+                
+                }
 
 
 

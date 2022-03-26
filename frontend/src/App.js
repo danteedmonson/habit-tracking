@@ -9,22 +9,27 @@ import HabitsPage from "./pages/HabitsPage";
 import CalendarPage from "./pages/CalendarPage";
 import { BrowserRouter as Router, Switch, Route, Link, Routes} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useMediaQuery } from 'react-responsive'
+import background from "./images/pastelbackground3.png";
 
 export const DevContext = createContext("https://habeuro.com/api")
 
 function App() {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 850px)'
+})
   return (
     <DevContext.Provider value="https://habeuro.com/api">
     <div className="App">
-      <div className="App-container">
+      <div className="App-container" style={!isMobile ? {backgroundImage:`url(${background})`}: {}}>
         <Router>
           <Routes>
-            <Route path ="/"  exact element={<LoginPage />}/>
-            <Route path ="/Register"  exact element={<RegisterPage />}/>
+            <Route path ="/"  exact element={<LoginPage isMobile={isMobile}/>}/>
+            <Route path ="/Register"  exact element={<RegisterPage isMobile={isMobile}/>}/>
             <Route path ="/Dashboard"  exact element={<Dashboard />}/>
-            <Route path ="/Stats"  exact element={<StatsPage />}/>
+            <Route path ="/Stats"  exact element={<StatsPage isMobile={isMobile}/>}/>
             <Route path ="/Habits"  exact element={<HabitsPage />}/>
-            <Route path ="/Calendar"  exact element={<CalendarPage />}/>
+            <Route path ="/Calendar"  exact element={<CalendarPage isMobile={isMobile}/>}/>
           </Routes>
         </Router>
       </div>

@@ -64,7 +64,7 @@ function HabitList(props) {
 
 
 
-    if (loaded && habits.length > 0 && habits.length <= 8 && !props.hPage)
+    if (loaded && habits.length > 0 && habits.length <= 8 && !props.hPage && !props?.isMobile)
         return (
             <div>
 
@@ -117,7 +117,7 @@ function HabitList(props) {
                 </Carousel>
             </div>
         )
-    else if (loaded && habits.length > 8 && !props.hPage)
+    else if (loaded && habits.length > 8 && !props.hPage && !props?.isMobile)
         return (
             <div>
                 <Carousel
@@ -196,7 +196,7 @@ function HabitList(props) {
 
 
 
-    else if (props.hPage)
+    else if (props.hPage && loaded && habits.length !== 0)
     return(
         <div className="container ">
                         <div className="row justify-content-start mx-auto" style={{ height: "80%", }} >
@@ -229,6 +229,40 @@ function HabitList(props) {
                     </div>
 
     )
+    else if(props?.isMobile && loaded && habits.length != 0)
+        return(
+            <>
+                        <div  style={{   width:"auto",height:"auto", display:"flex", flexWrap:"wrap", justifyContent:"flex-start",  }} >
+
+                            {
+                                habits.map((habit, index) => {
+                                    return (
+                                        <div key={index} style={{ width:"50%",}}>
+
+                                            <Habit
+                                                isMobile={props?.isMobile}
+                                                Active={habit.Active}
+                                                CheckIns={habit.CheckIns}
+                                                Color={habit.Color}
+                                                Description={habit.Description}
+                                                HabitName={habit.HabitName}
+                                                Icon={habit.Icon}
+                                                Occurrence={habit.Occurrence}
+                                                Progress={habit.Progress}
+                                                TimesPer={habit.TimesPer}
+                                                _id={habit._id}
+                                                setRerend={props.setRerend}
+                                                rerend={props.rerend}
+                                                setProgReload={props.setProgReload} />
+
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        </>
+                  
+        )
     else if (loaded && habits.length == 0) {
         return (<div style={{ color: "white", position:"absolute", bottom:"70%", left:"50%",transform: "translateX(-50%)", opacity:0.5 }}>Create A Habit to Get Started!</div>)
 

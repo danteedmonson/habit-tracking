@@ -166,7 +166,7 @@ function AddModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            style={{backgroundColor:"transparent", height:"84%", marginTop:"5%"}}
+            style={{backgroundColor:"transparent", height: "84%",marginTop: !props?.isMobile ? "5%": "70px"}}
         >
 
             <Modal.Header
