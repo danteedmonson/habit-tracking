@@ -182,19 +182,19 @@ function Habit(props) {
 
       <div
         className="row  justify-content-center align-items-start my-row2 mx-auto"
-        style={{ width: "100%", height: 40 }}
+        style={{ width: "100%", height: 40 , }}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
         <div
           className="col-4 my-col d-flex justify-content-center lesspadding"
-          style={{ cursor: props.Active && "pointer" }}
+          style={{ cursor: props.Active && "pointer", width:"20%" }}
           onClick={updateInfo}
         >
           <Edit
             fill={props.Color}
             style={{
-              width: "20px",
+              minWidth: "20px",
               marginTop: 10,
               opacity: hover && props.Active || props?.isMobile ? 1 : 0,
               cursor: props.Active && "pointer",
@@ -207,9 +207,9 @@ function Habit(props) {
             fontFamily: "Roboto, sans-serif",
             fontWeight: "bold",
             fontSize: !props?.isMobile ? "1.8vmin" : "14px",
-            overflow:"visible",
+            overflowWrap:"anywhere",
             padding: 0,
-            width:"20%",
+            width:"60%",
             color: props.Color,
           }}
         >
@@ -217,13 +217,13 @@ function Habit(props) {
         </div>
         <div
           className="col-4 my-col lesspadding"
-          style={{ cursor: props.Active && "pointer" }}
+          style={{ cursor: props.Active && "pointer", width:"20%" }}
           onClick={decreasePercent}
         >
           <Undo
             fill={props.Color}
             style={{
-              width: "20px",
+              minWidth: "20px",
               marginTop: 10,
               opacity: hover && props.Active || props?.isMobile ? 1 : 0,
               cursor: "pointer",
