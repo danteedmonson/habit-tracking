@@ -60,7 +60,7 @@
 
 
 <p align="center" width="100%">
-    <img  src="./images/statspage.png" alt="stats" width="1000"/>
+    <img  src="./images/stat.png" alt="stats" width="1000"/>
 </p>
 <br/>
 <br/>
