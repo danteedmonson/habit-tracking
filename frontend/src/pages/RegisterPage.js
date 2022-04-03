@@ -39,7 +39,8 @@ function RegisterPage(props) {
         }).catch(err => console.log(err))
     }, []);
 
-    const register = () => {
+    const register = (event) => {
+        event.preventDefault();
 
         const loginInfo = JSON.stringify({
             email: email,
@@ -55,7 +56,6 @@ function RegisterPage(props) {
                 },
 
             }).then(res => {
-                console.log(res.data);
                 login();
 
             }).catch(err => setMessage(err.response.data))
