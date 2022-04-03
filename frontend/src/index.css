@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-right: 0px !important;
-  background: linear-gradient(#2c4155, #4b4e75);
+  background: #181c2c;
 }
 
 code {
@@ -21,12 +21,10 @@ code {
 }
 
 .modal-content {
-  background-color: transparent !important;
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
   color:white;
-  backdrop-filter: blur(10px) !important;
-  background-color: rgba(0, 0, 0, 0.2) !important;
+  background-color: #202434 !important;
   border-radius: 5px;
 
 }

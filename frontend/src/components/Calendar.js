@@ -62,7 +62,7 @@ function Calendar(props) {
                     <Check
                         style={{ height: 40 }}
                         key={i}
-                        stroke={props.dash ? "#EDBBB4" : props.Color}
+                        stroke={props.dash ? "#00CC8E" : props.Color}
                     />
                 ) : (
                     <></>

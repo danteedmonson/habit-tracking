@@ -178,7 +178,7 @@ function AddModal(props) {
                     }
                 }>
                 <Modal.Title id="example-custom-modal-styling-title" >
-                    <h6 style={{ fontFamily:"Courgette", color:"#EDBBB4", fontSize: 25 }}>Create Habit</h6>
+                    <h6 style={{ fontWeight:"bold", fontSize: 25 }}>Create Habit</h6>
                 </Modal.Title >
             </Modal.Header>
             {
@@ -352,7 +352,7 @@ function AddModal(props) {
                                 {iconArr.map((eachIcon, index) => (
                                     <div className="col-lg-2 col-sm-6">
                                         <div style={{ width: 100, height: 100, margin: "5%", padding: 10 }}>
-                                            <div style={{ width: "100%", marginTop: -5, borderRadius: 10, border: icon === index ? "3px solid #EDBBB4" : "0px solid #EDBBB4" }}  key={index} onClick={() => setIcon(index)} >
+                                            <div style={{ width: "100%", marginTop: -5, borderRadius: 10, border: icon === index ? "3px solid #00CC8E" : "0px solid #00CC8E" }}  key={index} onClick={() => setIcon(index)} >
                                                 {eachIcon}
                                             </div>
                                         </div>

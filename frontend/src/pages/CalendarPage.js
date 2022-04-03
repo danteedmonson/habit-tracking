@@ -67,7 +67,6 @@ function CalendarPage(props) {
     else 
     return (
         <div className="noSelect" style={{ color: "black", width: "100%" }}>
-            <div className="frostedBackground"></div>
             <AppDrawer isMobile={props.isMobile}/>
             <br></br>
             <br></br>

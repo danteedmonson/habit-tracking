@@ -14,7 +14,7 @@ function HabitBox(props) {
             <>
 
                 <div className="dashBox" id={props.hPage ? "habitPageBox" : "habitBox"}>
-                    <div style={{ position: "absolute", left: 20, top: 12, fontFamily: "Courgette", color: "#EDBBB4" }}>Habits</div>
+                    <div style={{ position: "absolute", left: 20, top: 12, fontWeight:"bold" }}>Habits</div>
                     <Button
                         variant="secondary"
                         onClick={() => setModalShow(true)}
@@ -57,7 +57,7 @@ function HabitBox(props) {
             <>
 
                
-                    <div style={{ position: "fixed", left: 20, top: 60, fontFamily: "Courgette", color: "#EDBBB4" }}>Habits</div>
+                    <div style={{ position: "fixed", left: 20, top: 60, fontWeight:"bold", color:"white" }}>Habits</div>
                     <Button
                         variant="secondary"
                         onClick={() => setModalShow(true)}

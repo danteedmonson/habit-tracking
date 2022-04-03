@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Button } from '@material-ui/core';
+import { Button, Checkbox, Link } from '@material-ui/core';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { Checkmark } from 'react-checkmark';
 import video from '../media/TheCall.mp4';
 import backgroundOne from '../images/wallpaperflare.com_wallpaper1.png';
 import { useNavigate } from "react-router";
 import {DevContext} from '../App'
+import '../styles/styles.css'
 
 
 
@@ -95,62 +96,37 @@ function RegisterPage(props) {
     if (!props.isMobile)
     return (
 
-        <>
-            <div className="frostedBackground"></div>
-            <div style={{ margin: "auto", padding: 10, marginTop: "3%" }}>
+        <div className="register-page">
+            <div id="register-box">
 
+                <form id="register-side" autoComplete="off" onSubmit={register}>
+                    <h3>Register</h3>
+                        <input autoComplete="false" name="hidden" type="text" style={{display:"none"}}/>
+                        <input type="text" placeholder="First Name" onChange={(c) => setFirstName(c.target.value)}></input>
+                        <input type="text" placeholder="Last Name" onChange={(c) => setLastName(c.target.value)}></input>
+                        <input type="text" placeholder="Email" autoComplete="new-email"  onChange={(c) => setEmail(c.target.value)}></input>
+                        <input type="password" placeholder="Password" autoComplete="new-password" onChange={(c) => setPassword(c.target.value)}></input>
 
-                <div className="container my-container mt-5 justify-content-end ">
-                    <div className="row justify-content-end " style={{height:"100%"}}>
+                        <div>
+                            <Button id="register-button" type='submit' disabled={!(email && password)}>Register</Button>
+                            <div id='remember'>
+                                <span >
+                                    <Checkbox />
+                                    Remember Me
+                                </span>
 
-                        <div className="col col-auto w3-animate-right" style={{ width: "55.55vh" }}>
-
-                        <h4 className="text-center" style={{ fontFamily: "Courgette", fontSize: 19, marginTop: 7.5, marginBottom:30 }}>Register to Get Started!</h4>
- 
-
-                            <div style={{ display: "flex", alignItems: "center", justifyContent:"space-between", flexDirection: "column", marginTop: 15, height:200, marginBottom:30 }} >
-                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="First Name" variant="outlined" onChange={(c) => setFirstName(c.target.value)} margin="normal" size="small" />
-                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Last Name" variant="outlined" onChange={(c) => setLastName(c.target.value)} margin="normal" size="small" />
-                            <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Email" variant="outlined"  autoComplete="off" onChange={(c) => setEmail(c.target.value)} margin="normal" size="small" />
-                            <input style={{ width:"70%"}}   className="form-control" type="password" placeholder="Password" variant="outlined" autoComplete="off" onChange={(c) => setPassword(c.target.value)} size="small" />
-                        </div>
-                            <div className="row my-row justify-content-center align-items-center ">
-                                <div className="col-5 col my-col col-auto">
-                                    <Button variant="contained" size="lg" onClick={register} style={{ width: "100%" }} block>Register</Button>
-
-                                    <span id="loginResult"><p>{message}</p></span>
-                                </div>
-
-
+                                <Link href='#' onClick={() => navigate("../", { replace: true })} id="login-link">Login?</Link>
                             </div>
-                            <div className="row my-row justify-content-center align-items-end " style={{ height: "6.5vh" }} >
-                                <div className="col-md-6 col-sm-6 my-col">
-                                    <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goLogin}><a>Have an Account? Login Here</a></h6>
-                                </div>
-
-
-
-                            </div>
-                            <div className="row my-row justify-content-center align-items-start " >
-                                <div className="col-md-6 col-sm-6 my-col">
-
-                                </div>
-
-                            </div>
-
-
+                            <span id='error'>{message}</span>
                         </div>
-                        <div className="col  w3-animate-opacity" style={{ width: "68.35vh", padding:"-11.25px" }}>
-                            <img width="120%" height="100%" alt="" style={{ objectFit: "cover", marginLeft: "0%", opacity: 1, borderRadius:10 }} src={backgroundOne} />
-                               
-                           
+                 
 
-                        </div>
-
-                    </div>
+                </form>
+                <div id="image-side-reg">
                 </div>
             </div>
-        </>
+        </div>
+        
     );
     else
     return (
@@ -160,43 +136,33 @@ function RegisterPage(props) {
        
        
 
-                <div className="col col-auto w3-animate-right" style={{ width: "95%" }}>
+        <div className="register-page">
+            <div id="register-box-mobile">
 
-                <h4 className="text-center" style={{ fontFamily: "Courgette", fontSize: 19, marginTop: 7.5, marginBottom:30 }}>Register to Get Started!</h4>
+                <form id="register-side-mobile" autoComplete="off" onSubmit={register}>
+                    <h3>Register</h3>
+                        <input autoComplete="false" name="hidden" type="text" style={{display:"none"}}/>
+                        <input type="text" placeholder="First Name" onChange={(c) => setFirstName(c.target.value)}></input>
+                        <input type="text" placeholder="Last Name" onChange={(c) => setLastName(c.target.value)}></input>
+                        <input type="text" placeholder="Email" autoComplete="new-email"  onChange={(c) => setEmail(c.target.value)}></input>
+                        <input type="password" placeholder="Password" autoComplete="new-password" onChange={(c) => setPassword(c.target.value)}></input>
 
+                        <div>
+                            <Button id="register-button" type='submit' disabled={!(email && password)}>Register</Button>
+                            <div id='remember'>
+                                <span >
+                                    <Checkbox />
+                                    Remember Me
+                                </span>
 
-                    <div style={{ display: "flex", alignItems: "center", justifyContent:"space-between", flexDirection: "column", marginTop: 15, height:200, marginBottom:30 }} >
-                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="First Name" variant="outlined" onChange={(c) => setFirstName(c.target.value)} margin="normal" size="small" />
-                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Last Name" variant="outlined" onChange={(c) => setLastName(c.target.value)} margin="normal" size="small" />
-                    <input style={{ width:"70%"}} className="form-control" type="text" placeholder="Email" variant="outlined"  autoComplete="off" onChange={(c) => setEmail(c.target.value)} margin="normal" size="small" />
-                    <input style={{ width:"70%"}}   className="form-control" type="password" placeholder="Password" variant="outlined" autoComplete="off" onChange={(c) => setPassword(c.target.value)} size="small" />
-                </div>
-                    <div className="row my-row justify-content-center align-items-center ">
-                        <div className="col-5 col my-col col-auto">
-                            <Button variant="contained" size="lg" onClick={register} style={{ width: "100%" }} block>Register</Button>
-
-                            <span id="loginResult"><p>{message}</p></span>
+                                <Link href='#' onClick={() => navigate("../", { replace: true })} id="login-link">Login?</Link>
+                            </div>
+                            <span id='error'>{message}</span>
                         </div>
-
-
-                    </div>
-                    <div className="row my-row justify-content-center align-items-end " style={{ height: "6.5vh" }} >
-                        <div className="col-md-6 col-sm-6 my-col">
-                            <h6 className="text-center" style={{ cursor: "pointer", fontFamily: 'Roboto' }} onClick={goLogin}><a>Have an Account? Login Here</a></h6>
-                        </div>
-
-
-
-                    </div>
-                    <div className="row my-row justify-content-center align-items-start " >
-                        <div className="col-md-6 col-sm-6 my-col">
-
-                        </div>
-
-                    </div>
-
-
-                </div>
+                 
+                </form>
+            </div>
+        </div>
 
        
 

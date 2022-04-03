@@ -143,10 +143,10 @@ function LineGraph(props) {
                                 {
 
                                     data: [am12, am1, am2, am3, am4, am5, am6, am7, am8, am9, am10, am11, pm12, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11],
-                                    backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
-                                    borderColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
+                                    backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#00CC8E',
+                                    borderColor: (typeof props.Color !== "undefined") ? props.Color : '#00CC8E',
                                     line: {
-                                        borderColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4'
+                                        borderColor: (typeof props.Color !== "undefined") ? props.Color : '#00CC8E'
                                     }
 
 

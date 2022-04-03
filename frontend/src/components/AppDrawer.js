@@ -98,7 +98,7 @@ function AppDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <div style={{ width: "100%", paddingTop: 14 }}>
-                        <p style={{ textAlign: "center", fontFamily: "Courgette" }}></p>
+                        <p style={{ textAlign: "center" }}></p>
                     </div>
 
                     <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleClick}>

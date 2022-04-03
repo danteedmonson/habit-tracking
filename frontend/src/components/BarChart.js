@@ -64,7 +64,7 @@ function BarChart(props) {
                             datasets: [
                                 {
                                     data: (typeof props.Checkins !== "undefined") ? [mon, tues, wed, thurs, fri, sat, sun] : [5, 8, 3, 6, 9, 3, 6],
-                                    backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#EDBBB4',
+                                    backgroundColor: (typeof props.Color !== "undefined") ? props.Color : '#00CC8E',
                                     borderRadius: 5,
                                     border: 2,
                                     borderColor: "#000"

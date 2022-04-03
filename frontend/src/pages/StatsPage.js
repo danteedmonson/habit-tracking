@@ -66,7 +66,6 @@ function StatsPage(props) {
     else 
     return (
         <div className="noSelect" style={{ color: "black", width: "100%" }}>
-            <div className="frostedBackground"></div>
             <AppDrawer isMobile={props.isMobile}/>
             <br></br>
             <br></br>
@@ -78,7 +77,7 @@ function StatsPage(props) {
                     <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-4 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
-                            <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
+                            <h3>Streak:</h3>
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].Streak}</h2>
                         </div>
 
@@ -108,7 +107,7 @@ function StatsPage(props) {
                     </div>
                     <div className="col-4 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color }}>
-                            <h3 style={{ fontFamily: "Courgette" }}>Longest Streak:</h3>
+                            <h3>Longest Streak:</h3>
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].LongestStreak}</h2>
 
                         </div>
@@ -120,7 +119,7 @@ function StatsPage(props) {
                 <div className="row mx-auto justify-content-center align-items-center">
                     <div className="col-12 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color, marginBottom:5 }}>
-                            <h3 style={{ fontFamily: "Courgette" }}>Streak:</h3>
+                            <h3>Streak:</h3>
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].Streak}</h2>
                         </div>
 
@@ -150,7 +149,7 @@ function StatsPage(props) {
                     </div>
                     <div className="col-12 my-col">
                         <div className="dashBox" style={{ height: "18vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", color: habits[currentSlide].Color,marginBottom:5 }}>
-                            <h3 style={{ fontFamily: "Courgette" }}>Longest Streak:</h3>
+                            <h3>Longest Streak:</h3>
                             <h2 style={{ fontFamily: "Roboto" }}>{habits[currentSlide].CheckIns[habits[currentSlide].CheckIns.length - 1].LongestStreak}</h2>
 
                         </div>

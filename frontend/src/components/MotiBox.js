@@ -10,7 +10,7 @@ function MotiBox() {
 
     return (
         <div className="dashBox" id="motiBox">
-            <div style={{ left: "20px", top: 12, fontFamily: "Courgette", color: "#EDBBB4", position:"absolute" }}>Motivation</div>
+            <div style={{ left: "20px", top: 12, fontWeight:"bold", position:"absolute" }}>Motivation</div>
 
             
                     <div style={{  position:"absolute", top:"20%", bottom:"40%", left:0, right:0, margin:10, fontSize:15 }}>

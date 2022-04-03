@@ -15,7 +15,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: "#EDBBB4",
+    backgroundColor: "#00CC8E",
     boxShadow: " 0 0 5px white",
   },
 }))(LinearProgress);
@@ -67,7 +67,7 @@ function ProgressBox(props) {
 
   return (
     <div className="dashBox" id="progressBox" style={{ alignItems: "center",  }}>
-      <div style={{paddingLeft:"20px", paddingTop:12, marginBottom:-20, fontFamily:"Courgette", color:"#EDBBB4"}}>Progress</div>
+      <div style={{paddingLeft:"20px", paddingTop:12, marginBottom:-20, fontWeight:"bold"}}>Progress</div>
       <div
         style={{
           

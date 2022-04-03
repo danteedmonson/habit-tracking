@@ -16,7 +16,7 @@ function HabitList(props) {
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
 
-        try {
+       
             axios({
 
                 method: 'post',
@@ -36,10 +36,6 @@ function HabitList(props) {
 
 
             }).catch(err => console.log("hello"))
-        } catch (err) {
-
-        }
-
     }, [props.rerend])
 
     useEffect(() => {

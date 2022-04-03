@@ -10,7 +10,7 @@ import CalendarPage from "./pages/CalendarPage";
 import { BrowserRouter as Router, Switch, Route, Link, Routes} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMediaQuery } from 'react-responsive'
-import background from "./images/pastelbackground3.png";
+import background from "./images/background3.svg";
 
 export const DevContext = createContext("https://habeuro.com/api")
 
@@ -21,7 +21,7 @@ function App() {
   return (
     <DevContext.Provider value="https://habeuro.com/api">
     <div className="App">
-      <div className="App-container" style={!isMobile ? {backgroundImage:`url(${background})`}: {}}>
+      <div className="App-container">
         <Router>
           <Routes>
             <Route path ="/"  exact element={<LoginPage isMobile={isMobile}/>}/>
