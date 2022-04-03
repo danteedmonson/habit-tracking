@@ -69,6 +69,7 @@
 
 <p align="center" width="100%">
     <img  src="./images/screenshot-hab3.png" alt="calendar" width="1000"/>
+    
 </p>
 <br/>
 <br/>
