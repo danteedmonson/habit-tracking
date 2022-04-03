@@ -52,7 +52,7 @@
 ## Screenshots
 
 <p align="center" width="100%">
-    <img  src="./images/dashboard.png" alt="dash" width="1000"/>
+    <img  src="./images/screenshot-hab.png" alt="dash" width="1000"/>
 </p>
 <br/>
 <br/>
@@ -60,7 +60,7 @@
 
 
 <p align="center" width="100%">
-    <img  src="./images/stats.png" alt="stats" width="1000"/>
+    <img  src="./images/screenshot-hab2.png" alt="stats" width="1000"/>
 </p>
 <br/>
 <br/>
@@ -68,7 +68,7 @@
 
 
 <p align="center" width="100%">
-    <img  src="./images/calendar.png" alt="calendar" width="1000"/>
+    <img  src="./images/screenshot-hab3.png" alt="calendar" width="1000"/>
 </p>
 <br/>
 <br/>
